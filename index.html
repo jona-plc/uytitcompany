@@ -1,0 +1,1492 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UY TIT & COMPANY, INC.</title>
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      box-sizing: border-box;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes drawLine {
+      from { width: 0; }
+      to { width: 70px; }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,160,23,0.20); }
+      50% { box-shadow: 0 0 18px 6px rgba(212,160,23,0.10); }
+    }
+
+    .anim-fade-up { opacity: 0; }
+    .anim-fade-up.visible { animation: fadeUp 0.7s ease forwards; }
+
+    .anim-fade-in { opacity: 0; }
+    .anim-fade-in.visible { animation: fadeIn 0.8s ease forwards; }
+
+    .anim-slide-right { opacity: 0; }
+    .anim-slide-right.visible { animation: slideRight 0.7s ease forwards; }
+
+    .anim-slide-left { opacity: 0; }
+    .anim-slide-left.visible { animation: slideLeft 0.7s ease forwards; }
+
+    .anim-scale-in { opacity: 0; }
+    .anim-scale-in.visible { animation: scaleIn 0.65s ease forwards; }
+
+    .stagger-1 { animation-delay: 0.1s !important; }
+    .stagger-2 { animation-delay: 0.2s !important; }
+    .stagger-3 { animation-delay: 0.3s !important; }
+    .stagger-4 { animation-delay: 0.4s !important; }
+    .stagger-5 { animation-delay: 0.5s !important; }
+    .stagger-6 { animation-delay: 0.6s !important; }
+
+    .gold-line::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 0;
+      margin-top: 14px;
+      background: #d4a017;
+      border-radius: 999px;
+    }
+
+    .gold-line.visible::after {
+      animation: drawLine 0.8s ease forwards;
+    }
+
+    .hover-lift {
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(15,45,92,0.10);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #d4a017;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+   .hero-bg {
+  position: relative;
+  overflow: hidden;
+  background: url('assets/banner1.png') center/cover no-repeat;
+}
+
+    .hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  /* mas dark overlay para readable text */
+  background: rgba(0, 0, 0, 0.6);
+
+  pointer-events: none;
+}
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,160,23,0.18) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shimmer-text {
+      background: linear-gradient(90deg, #d4a017 0%, #f7dc7b 50%, #d4a017 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s ease infinite;
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 420px;
+      opacity: 1;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #d4a017, #f3d164);
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    .stat-card {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    .stat-card:nth-child(2) { animation-delay: 0.4s; }
+    .stat-card:nth-child(3) { animation-delay: 0.8s; }
+    .stat-card:nth-child(4) { animation-delay: 1.2s; }
+    .stat-card:nth-child(5) { animation-delay: 1.6s; }
+
+    .category-btn.active {
+      background: #0f2d5c;
+      color: #ffffff;
+      border-color: #0f2d5c;
+      box-shadow: 0 12px 25px rgba(15,45,92,0.16);
+    }
+
+    .category-panel {
+      display: none;
+    }
+
+    .category-panel.active {
+      display: block;
+      animation: fadeUp 0.55s ease forwards;
+    }
+
+    .product-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+
+    .product-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .product-card {
+      min-width: 280px;
+      max-width: 280px;
+      flex: 0 0 280px;
+    }
+
+   .brand-line{
+  display:flex;
+  align-items:center;
+  gap:70px;
+  width:max-content;
+  animation:brandMove 26s linear infinite;
+}
+
+.brand-line img{
+  height:60px;
+  width:auto;
+  object-fit:contain;
+  flex-shrink:0;
+  transition:transform .35s ease, opacity .35s ease;
+  opacity:.9;
+}
+
+.brand-line img:hover{
+  transform:scale(1.06);
+  opacity:1;
+}
+
+@keyframes brandMove{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+
+@media (max-width:768px){
+  .brand-line{
+    gap:40px;
+    animation-duration:18s;
+  }
+
+  .brand-line img{
+    height:38px;
+  }
+}
+    .faq-item[data-open="true"] .faq-answer {
+      display: block;
+      animation: fadeUp 0.4s ease forwards;
+    }
+
+    .faq-item[data-open="true"] .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      display: none;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-right {
+        display: none;
+      }
+    }
+    .about-feature{
+  border:1px solid transparent;
+}
+
+.about-feature.active{
+  background:#ffffff;
+  border-color:#fde7b0;
+  box-shadow:0 14px 30px rgba(15,45,92,0.08);
+  transform:translateY(-4px);
+}
+
+.about-feature.active .about-check{
+  background:#d97706;
+  transform:scale(1.08);
+  box-shadow:0 10px 20px rgba(217,119,6,0.20);
+}
+
+.about-feature.active .about-check-icon{
+  color:#ffffff !important;
+}
+
+.about-feature.active p:first-child{
+  color:#0f2d5c;
+}
+
+.about-feature:hover{
+  transform:translateY(-3px);
+}
+
+.category-wrap{
+  position:relative;
+  width:100%;
+  height:540px;
+  border-radius:34px;
+  overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* each slide */
+.category-view{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:scale(1.05);
+  transition:all .7s ease;
+}
+
+.category-view.active{
+  opacity:1;
+  transform:scale(1);
+  z-index:2;
+}
+
+.category-view img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* overlay */
+.category-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  padding:40px;
+  background:linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%);
+}
+
+.category-overlay h3{
+  color:#fff;
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+/* subtle animation */
+.category-view.active img{
+  animation:zoomSlow 6s ease forwards;
+}
+
+@keyframes zoomSlow{
+  from{ transform:scale(1); }
+  to{ transform:scale(1.08); }
+}
+
+@media (max-width:768px){
+  .category-wrap{
+    height:320px;
+    border-radius:20px;
+  }
+
+  .category-overlay{
+    padding:20px;
+  }
+
+  .category-overlay h3{
+    font-size:20px;
+  }
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:24px 34px;
+}
+
+.why-item{
+  position:relative;
+  display:flex;
+  gap:18px;
+  padding:28px 22px;
+  border-top:1px solid #e5e7eb;
+  border-radius:20px;
+  background:transparent;
+  transition:all .35s ease;
+  cursor:pointer;
+}
+
+.why-no{
+  min-width:42px;
+  font-size:13px;
+  font-weight:700;
+  color:#d4a017;
+  letter-spacing:.18em;
+  padding-top:2px;
+  transition:all .35s ease;
+}
+
+.why-line{
+  width:1px;
+  background:linear-gradient(to bottom, #d4a017, transparent);
+  opacity:.45;
+  transition:all .35s ease;
+}
+
+.why-copy h3{
+  margin:0;
+  font-size:24px;
+  line-height:1.2;
+  font-weight:700;
+  color:#0f2d5c;
+  transition:all .35s ease;
+}
+
+.why-copy p{
+  margin:14px 0 0;
+  font-size:14px;
+  line-height:1.8;
+  color:#6b7280;
+  transition:all .35s ease;
+}
+
+.why-item:hover,
+.why-item.active{
+  background:#ffffff;
+  box-shadow:0 18px 40px rgba(15,45,92,0.08);
+  transform:translateY(-4px);
+}
+
+.why-item:hover .why-no,
+.why-item.active .why-no{
+  color:#0f2d5c;
+  transform:scale(1.08);
+}
+
+.why-item:hover .why-line,
+.why-item.active .why-line{
+  width:3px;
+  opacity:1;
+  background:#d4a017;
+}
+
+.why-item:hover .why-copy h3,
+.why-item.active .why-copy h3{
+  color:#0b2347;
+}
+
+.why-item:hover .why-copy p,
+.why-item.active .why-copy p{
+  color:#4b5563;
+}
+
+@media (max-width: 991px){
+  .why-grid{
+    grid-template-columns:1fr;
+  }
+
+  .why-copy h3{
+    font-size:22px;
+  }
+}
+
+@media (max-width: 640px){
+  .why-item{
+    padding:22px 16px;
+    gap:14px;
+  }
+
+  .why-no{
+    min-width:34px;
+    font-size:11px;
+  }
+
+  .why-copy h3{
+    font-size:20px;
+  }
+
+  .why-copy p{
+    font-size:13px;
+    line-height:1.7;
+  }
+}
+
+  </style>
+</head>
+
+<body class="h-full font-body text-gray-800 bg-white overflow-x-hidden">
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- TOPBAR -->
+  <div class="bg-gray-50 border-b border-gray-100 text-xs anim-fade-in visible">
+    <div class="max-w-7xl mx-auto px-5 py-2.5 flex flex-wrap justify-between items-center gap-2">
+      <div class="flex flex-wrap gap-4 items-center text-gray-600">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="phone" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>(02) 8 2429566</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="map-pin" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>314 DASMARINAS STREET, BINONDO MANILA, Philippines</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="mail" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>utcimanila@gmail.com</span>
+        </span>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 min-w-0">
+       <div class="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
+  <img src="assets/logo.png" alt="UY TIT Logo" class="w-full h-full object-contain">
+</div>
+        <div class="min-w-0">
+          <h2 class="font-heading font-bold text-sm text-[#0f2d5c] truncate">UY TIT & COMPANY, INC.</h2>
+          <p class="text-[10px] text-gray-500 truncate">Hardware Tools, Power Tools & Industrial Products</p>
+        </div>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-6" id="desktopNav">
+        <a href="#home" class="nav-link active text-[#0f2d5c] font-bold text-sm">Home</a>
+        <a href="#about" class="nav-link text-[#0f2d5c] font-bold text-sm">About</a>
+        <a href="#categories" class="nav-link text-[#0f2d5c] font-bold text-sm">Categories</a>
+        <a href="#products" class="nav-link text-[#0f2d5c] font-bold text-sm">Products</a>
+        <a href="#brands" class="nav-link text-[#0f2d5c] font-bold text-sm">Brands</a>
+        <a href="#contact" class="nav-link text-[#0f2d5c] font-bold text-sm">Contact</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#contact" class="bg-[#0f2d5c] text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-[#1a4a8a] transition-all duration-300 hover:shadow-lg">
+          Request a Quote
+        </a>
+      </div>
+
+      <button class="lg:hidden w-10 h-10 border border-gray-200 rounded-lg flex flex-col items-center justify-center gap-1 bg-white" id="menuToggle" aria-label="Toggle menu">
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar1"></span>
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar2"></span>
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar3"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu lg:hidden bg-white border-t border-gray-100" id="mobileMenu">
+      <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-3">
+        <a href="#home" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Home</a>
+        <a href="#about" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">About</a>
+        <a href="#categories" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Categories</a>
+        <a href="#products" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Products</a>
+        <a href="#brands" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Brands</a>
+        <a href="#contact" class="text-[#0f2d5c] font-bold text-sm py-2">Contact</a>
+        <a href="#contact" class="bg-[#0f2d5c] text-white text-center py-3 rounded-full text-xs font-bold mt-2">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero-bg relative" style="padding: 88px 0 70px;">
+    <div class="max-w-7xl mx-auto px-5 relative z-10 flex flex-col lg:flex-row items-center gap-12">
+      <div class="flex-1 anim-slide-right">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6 border border-white/10">
+          
+        </div>
+
+        <h1 class="font-heading text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.08] text-white">
+          Powering Businesses<br>
+          <span class="shimmer-text">Delivering Solutions</span>
+        </h1>
+
+        <p class="mt-5 text-base text-white/75 leading-relaxed max-w-xl">
+         Uy Tit & Company is a trusted distributor of hardware tools, power tools, and industrial products in the Philippines with over a century of excellence.
+        </p>
+</div>
+      <a href="#categories" class="inline-flex items-center gap-2.5 bg-white text-[#0f2d5c] px-7 py-3.5 rounded-full text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:bg-[#f8fafc] hover:-translate-y-0.5 transition-all duration-300">
+  <i data-lucide="layout-grid" style="width:18px;height:18px"></i>
+  <span>Browse Categories</span>
+</a>
+      
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="relative z-10 -mt-8 pb-8">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="bg-white rounded-2xl shadow-xl shadow-gray-200/50 p-5 grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="stat-card text-center p-4 rounded-xl bg-gray-50 anim-fade-up stagger-1">
+          <p class="text-2xl font-heading font-bold text-[#0f2d5c] counter" data-target="150">0</p>
+          <p class="text-xs text-gray-500 mt-1">Years of heritage</p>
+        </div>
+        <div class="stat-card text-center p-4 rounded-xl bg-gray-50 anim-fade-up stagger-2">
+          <p class="text-2xl font-heading font-bold text-[#0f2d5c] counter" data-target="3000">0</p>
+          <p class="text-xs text-gray-500 mt-1">Products carried</p>
+        </div>
+        <div class="stat-card text-center p-4 rounded-xl bg-gray-50 anim-fade-up stagger-3">
+          <p class="text-2xl font-heading font-bold text-[#0f2d5c] counter" data-target="20">0</p>
+          <p class="text-xs text-gray-500 mt-1">Brand partners</p>
+        </div>
+        <div class="stat-card text-center p-4 rounded-xl bg-gray-50 anim-fade-up stagger-4">
+          <p class="text-2xl font-heading font-bold text-[#0f2d5c] counter" data-target="1000">0</p>
+          <p class="text-xs text-gray-500 mt-1">Business clients served</p>
+        </div>
+        <div class="stat-card text-center p-4 rounded-xl bg-gray-50 col-span-2 md:col-span-1 anim-fade-up stagger-5">
+          <p class="text-2xl font-heading font-bold text-[#0f2d5c]">PH</p>
+          <p class="text-xs text-gray-500 mt-1">Nationwide reach</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- ABOUT -->
+<section id="about" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-5 flex flex-col lg:flex-row gap-14 items-center">
+
+    <!-- LEFT -->
+    <div class="flex-1 anim-slide-right">
+      <div class="relative">
+        <div class="w-full aspect-[4/3] rounded-3xl overflow-hidden">
+          <img src="assets/uytit.png" 
+               alt="Uy Tit Company" 
+               class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="flex-1 anim-slide-left">
+      <p class="text-amber-600 font-bold text-xs tracking-widest uppercase mb-3">
+        About UY TIT
+      </p>
+
+      <p class="mt-6 text-gray-600 leading-relaxed text-sm text-justify">
+        UY TIT & COMPANY, INC. is a long-established distributor serving businesses, contractors, workshops, and industrial operations with quality hardware tools, power tools, industrial products, and essential supply items.
+      </p>
+
+      <p class="mt-6 text-gray-600 leading-relaxed text-sm text-justify">
+        Our range is selected to support real operational needs whether for construction, maintenance, fabrication, repair work, warehousing, workshop use, or day-to-day business requirements.
+      </p>
+
+      <p class="mt-6 text-gray-600 leading-relaxed text-sm text-justify">
+        Backed by trusted brands and years of industry experience, we help customers source durable, efficient, and practical products that deliver long-term value.
+      </p>
+
+      <!-- FEATURES -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4" id="aboutFeatures">
+
+        <div class="about-feature flex items-start gap-3 p-3 rounded-2xl transition-all duration-500">
+          <div class="about-check w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-500">
+            <i data-lucide="check" class="about-check-icon text-amber-600" style="width:16px;height:16px"></i>
+          </div>
+          <div>
+            <p class="font-bold text-sm text-[#0f2d5c]">Trusted Product Lines</p>
+            <p class="text-xs text-gray-500 mt-0.5">Selected for quality and reliability</p>
+          </div>
+        </div>
+
+        <div class="about-feature flex items-start gap-3 p-3 rounded-2xl transition-all duration-500">
+          <div class="about-check w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-500">
+            <i data-lucide="check" class="about-check-icon text-amber-600" style="width:16px;height:16px"></i>
+          </div>
+          <div>
+            <p class="font-bold text-sm text-[#0f2d5c]">Nationwide Service</p>
+            <p class="text-xs text-gray-500 mt-0.5">Support across the Philippines</p>
+          </div>
+        </div>
+
+        <div class="about-feature flex items-start gap-3 p-3 rounded-2xl transition-all duration-500">
+          <div class="about-check w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-500">
+            <i data-lucide="check" class="about-check-icon text-amber-600" style="width:16px;height:16px"></i>
+          </div>
+          <div>
+            <p class="font-bold text-sm text-[#0f2d5c]">Business-Focused Supply</p>
+            <p class="text-xs text-gray-500 mt-0.5">For workshops and operations</p>
+          </div>
+        </div>
+
+        <div class="about-feature flex items-start gap-3 p-3 rounded-2xl transition-all duration-500">
+          <div class="about-check w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-500">
+            <i data-lucide="check" class="about-check-icon text-amber-600" style="width:16px;height:16px"></i>
+          </div>
+          <div>
+            <p class="font-bold text-sm text-[#0f2d5c]">Customer Support</p>
+            <p class="text-xs text-gray-500 mt-0.5">Responsive and reliable service</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <!-- HEADING -->
+    <div class="text-center mb-12">
+      <p class="text-[11px] md:text-xs font-bold tracking-[0.28em] uppercase text-amber-600 mb-3">
+        Product Categories
+      </p>
+    </div>
+
+    <!-- IMAGE SLIDER -->
+    <div class="category-wrap">
+
+      <!-- POWER -->
+      <div class="category-view active">
+        <img src="assets/power-tools.png" alt="Power Tools">
+        <div class="category-overlay">
+          <h3>Power Tools</h3>
+        </div>
+      </div>
+
+      <!-- HAND -->
+      <div class="category-view">
+        <img src="assets/hand-tools.png" alt="Hand Tools">
+        <div class="category-overlay">
+          <h3>Hand Tools</h3>
+        </div>
+      </div>
+
+      <!-- GARDEN -->
+      <div class="category-view">
+        <img src="assets/garden-tools.png" alt="Garden Tools">
+        <div class="category-overlay">
+          <h3>Garden Tools</h3>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="py-24 bg-[#f8f8f8]">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <!-- TITLE -->
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold text-[#0f2d5c] leading-tight">
+        Why Businesses Choose Uy Tit & Company
+      </h2>
+      <p class="text-gray-500 text-sm mt-3">
+        Trusted by generations, built for modern business needs.
+      </p>
+    </div>
+
+    <!-- GRID -->
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- CARD -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <span class="text-amber-500 font-bold text-sm">01</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-2">Heritage & Experience</h3>
+        <p class="text-sm text-gray-500 mt-2">
+          With more than a century of business heritage, Uy Tit continues to serve customers with industry knowledge shaped by long-term trust.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <span class="text-amber-500 font-bold text-sm">02</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-2">Quality-Focused Selection</h3>
+        <p class="text-sm text-gray-500 mt-2">
+          We partner with reliable manufacturers to deliver dependable tools and solutions.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <span class="text-amber-500 font-bold text-sm">03</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-2">Nationwide Reach</h3>
+        <p class="text-sm text-gray-500 mt-2">
+          Supporting customers across the Philippines for retail, workshop, and industrial needs.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <span class="text-amber-500 font-bold text-sm">04</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-2">Customer-Centered Service</h3>
+        <p class="text-sm text-gray-500 mt-2">
+          Responsive communication and practical product guidance for real business needs.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <span class="text-amber-500 font-bold text-sm">05</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-2">Adaptive Product Range</h3>
+        <p class="text-sm text-gray-500 mt-2">
+          Continuously expanding offerings to match evolving market demand.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <span class="text-amber-500 font-bold text-sm">06</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-2">Built for Business Supply</h3>
+        <p class="text-sm text-gray-500 mt-2">
+          Designed for contractors, resellers, and industrial buyers.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- PRODUCTS -->
+<section id="products" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <!-- HEADER -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 anim-fade-up">
+
+      <!-- TITLE -->
+      <div>
+        
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#0f2d5c]">
+          Popular Products
+        </h2>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="flex gap-3 justify-center md:justify-end">
+        <button id="scrollLeft" class="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center text-[#0f2d5c] hover:bg-[#0f2d5c] hover:text-white transition-all duration-300">
+          <i data-lucide="arrow-left" style="width:18px;height:18px"></i>
+        </button>
+
+        <button id="scrollRight" class="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center text-[#0f2d5c] hover:bg-[#0f2d5c] hover:text-white transition-all duration-300">
+          <i data-lucide="arrow-right" style="width:18px;height:18px"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PRODUCT SLIDER -->
+    <div class="mt-12 product-track" id="productTrack">
+
+      <!-- ITEM 1 -->
+      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+         <img src="assets/grinder.png" class="w-full h-full object-cover rounded-2xl">
+        </div>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Power Tools</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">Angle Grinder</h3>
+        <p class="text-xs text-gray-500 mt-2">For cutting, grinding, and finishing tasks.</p>
+      </article>
+
+      <!-- ITEM 2 -->
+      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+        <img src="assets/bench.png" class="w-full h-full object-cover rounded-2xl">
+        </div>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Workshop</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">Bench Grinder</h3>
+        <p class="text-xs text-gray-500 mt-2">Used for sharpening and finishing.</p>
+      </article>
+
+
+      <!-- ITEM 4 -->
+      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+          <img src="assets/ladder.png" class="w-full h-full object-cover rounded-2xl">
+        </div>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Equipment</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">Ladder</h3>
+        <p class="text-xs text-gray-500 mt-2">For elevated work access.</p>
+      </article>
+
+            <!-- ITEM 5 -->
+      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+          <img src="assets/tape.png" class="w-full h-full object-cover rounded-2xl">
+        </div>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Hand Tools</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">Measuring Tape</h3>
+        <p class="text-xs text-gray-500 mt-2">For accurate length and distance measurements.</p>
+      </article>
+
+      <!-- ITEM 6 -->
+      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+          <img src="assets/pliers.png" class="w-full h-full object-cover rounded-2xl">
+        </div>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Hand Tools</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">Pliers Set</h3>
+        <p class="text-xs text-gray-500 mt-2">Ideal for gripping, bending, and cutting wires.</p>
+      </article>
+
+      <!-- ITEM 7 -->
+      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+          <img src="assets/shovel.png" class="w-full h-full object-cover rounded-2xl">
+        </div>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Garden Tools</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">3-Piece Shovel, Hoe & Rake</h3>
+        <p class="text-xs text-gray-500 mt-2">Perfect set for digging, cultivating, and leveling soil.</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+  <section id="brands" class="py-20 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 text-center">
+    <p class="text-amber-600 font-bold text-xs tracking-[0.25em] uppercase mb-6">
+      Brands We Trust
+    </p>
+
+    <div class="relative overflow-hidden">
+      <div class="brand-line">
+        <img src="assets/abloy.png" alt="abloy Logo">
+        <img src="assets/assab.png" alt="Assab Logo">
+        <img src="assets/deli.png" alt="deli Logo">
+        <img src="assets/fleco.png" alt="fleco Logo">
+        <img src="assets/gestar.png" alt="gestar Logo">
+        <img src="assets/hunter.png" alt="Hunter Logo">
+        <img src="assets/indestro.png" alt="Indestro Logo">
+        <img src="assets/jb.png" alt="jb Logo">
+        <img src="assets/kuko.png" alt="kuko Logo">
+        <img src="assets/masus.png" alt="Masus Logo">
+        <img src="assets/mitsui.png" alt="Mitsui Logo">
+        <img src="assets/nexus.png" alt="Nexus Logo">
+        <img src="assets/pressol.png" alt="Pressol Logo">
+        <img src="assets/sg.png" alt="sg Logo">
+        <img src="assets/solinnflex.png" alt="Solinnflex Logo">
+        <img src="assets/texas.png" alt="Texas Logo">
+        <img src="assets/tramontina.png" alt="Tramontina Logo">
+        <img src="assets/tungatip.png" alt="Tungatip Logo">
+        <img src="assets/womaco.png" alt="Womaco Logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <div class="text-center anim-fade-up mb-12">
+        <p class="text-amber-600 font-bold text-xs tracking-widest uppercase mb-3">FAQ</p>
+        
+      </div>
+
+      <div class="space-y-4">
+        <div class="faq-item bg-gray-50 border border-gray-100 rounded-2xl overflow-hidden" data-open="true">
+          <button class="faq-toggle w-full flex items-center justify-between text-left px-6 py-5">
+            <span class="font-bold text-sm text-[#0f2d5c]">What kinds of products does UY TIT supply?</span>
+            <i data-lucide="chevron-down" class="faq-icon text-[#0f2d5c]" style="width:18px;height:18px"></i>
+          </button>
+          <div class="faq-answer px-6 pb-5">
+            <p class="text-sm text-gray-500 leading-relaxed">
+              UY TIT supplies hardware tools, power tools, industrial products, gardening supplies, workshop items, accessories, and practical business-use supply solutions.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-gray-50 border border-gray-100 rounded-2xl overflow-hidden" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between text-left px-6 py-5">
+            <span class="font-bold text-sm text-[#0f2d5c]">Do you accommodate business and bulk inquiries?</span>
+            <i data-lucide="chevron-down" class="faq-icon text-[#0f2d5c]" style="width:18px;height:18px"></i>
+          </button>
+          <div class="faq-answer px-6 pb-5">
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Yes. The company is positioned to support inquiries from businesses, contractors, resellers, workshops, and industrial buyers looking for dependable supply.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-gray-50 border border-gray-100 rounded-2xl overflow-hidden" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between text-left px-6 py-5">
+            <span class="font-bold text-sm text-[#0f2d5c]">Do you carry trusted brands?</span>
+            <i data-lucide="chevron-down" class="faq-icon text-[#0f2d5c]" style="width:18px;height:18px"></i>
+          </button>
+          <div class="faq-answer px-6 pb-5">
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Yes. UY TIT works with known and trusted product lines and continues to build a dependable supply network for different categories and operational needs.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-gray-50 border border-gray-100 rounded-2xl overflow-hidden" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between text-left px-6 py-5">
+            <span class="font-bold text-sm text-[#0f2d5c]">Can I contact you for product inquiries?</span>
+            <i data-lucide="chevron-down" class="faq-icon text-[#0f2d5c]" style="width:18px;height:18px"></i>
+          </button>
+          <div class="faq-answer px-6 pb-5">
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Yes. You can use the contact section below for inquiries related to products, categories, and general supply requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 hero-bg relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 relative z-10 text-center anim-fade-up">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Ready to source the right tools for your business?</h2>
+      <p class="mt-4 text-white/70 text-sm max-w-2xl mx-auto">
+        Let’s help you find reliable hardware tools, power tools, industrial products, and practical supply solutions for your operational needs.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4 justify-center">
+        <a href="#contact" class="bg-amber-500 text-[#0f2d5c] px-8 py-3.5 rounded-full text-sm font-bold hover:bg-amber-400 transition-all duration-300 hover:shadow-xl inline-flex items-center gap-2">
+          Request a Quote
+        </a>
+        <a href="tel:+63282429366" class="border border-white/30 text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-white/10 transition-all duration-300 inline-flex items-center gap-2">
+          <i data-lucide="phone" style="width:16px;height:16px"></i>
+          Call Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="flex flex-col lg:flex-row gap-12">
+        <div class="flex-1 anim-slide-right">
+          <p class="text-amber-600 font-bold text-xs tracking-widest uppercase mb-3">Get In Touch</p>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#0f2d5c] gold-line">Talk to our team</h2>
+          <p class="mt-6 text-gray-500 text-sm leading-relaxed">
+            Looking for reliable tools, product categories, or supply support for your business? Send us your inquiry and our team can help guide you to the right products.
+          </p>
+
+          <div class="mt-8 space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-[#0f2d5c] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="map-pin" class="text-amber-500" style="width:18px;height:18px"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm text-[#0f2d5c]">Location</p>
+                <p class="text-xs text-gray-500 mt-0.5">314 DASMARINAS STREET, BINONDO MANILA, Philippines</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-[#0f2d5c] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="phone" class="text-amber-500" style="width:18px;height:18px"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm text-[#0f2d5c]">Phone</p>
+                <p class="text-xs text-gray-500 mt-0.5">(02) 8 2429366</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-[#0f2d5c] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="briefcase-business" class="text-amber-500" style="width:18px;height:18px"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm text-[#0f2d5c]">Business Support</p>
+                <p class="text-xs text-gray-500 mt-0.5">Product inquiries, category requests, and supply concerns</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1 anim-slide-left">
+          <form id="contactForm" class="bg-gray-50 rounded-2xl p-8 space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="fname" class="text-xs font-bold text-[#0f2d5c] mb-1.5 block">First Name</label>
+                <input id="fname" type="text" placeholder="First name" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all" />
+              </div>
+              <div>
+                <label for="lname" class="text-xs font-bold text-[#0f2d5c] mb-1.5 block">Last Name</label>
+                <input id="lname" type="text" placeholder="Last name" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all" />
+              </div>
+            </div>
+
+            <div>
+              <label for="company" class="text-xs font-bold text-[#0f2d5c] mb-1.5 block">Company / Business</label>
+              <input id="company" type="text" placeholder="Your company or business name" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all" />
+            </div>
+
+            <div>
+              <label for="message" class="text-xs font-bold text-[#0f2d5c] mb-1.5 block">Inquiry</label>
+              <textarea id="message" rows="5" placeholder="Tell us what tools, categories, or products you are looking for..." class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-[#0f2d5c] text-white py-3.5 rounded-xl font-bold text-sm hover:bg-[#1a4a8a] transition-all duration-300 flex items-center justify-center gap-2">
+              Send Inquiry
+              <i data-lucide="send" style="width:16px;height:16px"></i>
+            </button>
+
+            <div id="formSuccess" class="hidden text-center py-3 text-green-600 text-sm font-bold bg-green-50 rounded-xl">
+              <i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i>
+              Inquiry sent successfully.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0f2d5c] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-14 h-19 rounded-xl bg-amber-500 flex items-center justify-center">
+              <span class="font-heading font-bold text-[#0f2d5c] text-lg">UTCI</span>
+            </div>
+            <div>
+              <p class="font-heading font-bold text-sm">UY TIT & COMPANY, INC.</p>
+              <p class="text-[10px] text-white/50">Trusted Distributor</p>
+            </div>
+          </div>
+          <p class="text-xs text-white/60 leading-relaxed">
+            Supplying hardware tools, power tools, industrial products, gardening supplies, and dependable business solutions trusted across the Philippines.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-sm mb-4">Quick Links</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#home" class="text-xs text-white/60 hover:text-amber-500 transition-colors">Home</a></li>
+            <li><a href="#about" class="text-xs text-white/60 hover:text-amber-500 transition-colors">About</a></li>
+            <li><a href="#categories" class="text-xs text-white/60 hover:text-amber-500 transition-colors">Categories</a></li>
+            <li><a href="#products" class="text-xs text-white/60 hover:text-amber-500 transition-colors">Products</a></li>
+            <li><a href="#brands" class="text-xs text-white/60 hover:text-amber-500 transition-colors">Brands</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-sm mb-4">Main Categories</h4>
+          <ul class="space-y-2.5">
+            <li><span class="text-xs text-white/60">Hardware Tools</span></li>
+            <li><span class="text-xs text-white/60">Power Tools</span></li>
+            <li><span class="text-xs text-white/60">Industrial Products</span></li>
+            <li><span class="text-xs text-white/60">Gardening Supplies</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-sm mb-4">Contact Info</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2 text-xs text-white/60">
+              <i data-lucide="map-pin" style="width:14px;height:14px" class="text-amber-500 flex-shrink-0"></i>
+              314 DASMARINAS STREET, BINONDO MANILA, Philippines
+            </li>
+            <li class="flex items-center gap-2 text-xs text-white/60">
+              <i data-lucide="phone" style="width:14px;height:14px" class="text-amber-500 flex-shrink-0"></i>
+              (02) 8 2429566
+            </li>
+            <li class="flex items-center gap-2 text-xs text-white/60">
+              <i data-lucide="truck" style="width:14px;height:14px" class="text-amber-500 flex-shrink-0"></i>
+              Trusted across the Philippines
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-wrap justify-between items-center gap-4">
+        <p class="text-xs text-white/40">© 1868 UY TIT & COMPANY, INC. All rights reserved.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-amber-500 hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="facebook" style="width:14px;height:14px"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-amber-500 hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="instagram" style="width:14px;height:14px"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-amber-500 hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="linkedin" style="width:14px;height:14px"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-[#0f2d5c] text-white shadow-xl flex items-center justify-center z-50 opacity-0 translate-y-4 transition-all duration-300 hover:bg-amber-500 hover:text-[#0f2d5c]" aria-label="Back to top">
+    <i data-lucide="chevron-up" style="width:20px;height:20px"></i>
+  </button>
+
+  <script>
+    // Intersection animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          entry.target.querySelectorAll('.counter').forEach(counter => {
+            if (counter.dataset.done === 'true') return;
+
+            counter.dataset.done = 'true';
+            const target = +counter.dataset.target;
+            let current = 0;
+            const duration = 1000;
+            const steps = 40;
+            const increment = target / steps;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                current = target;
+                clearInterval(timer);
+              }
+              counter.textContent = Math.floor(current) + '+';
+            }, duration / steps);
+          });
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.anim-fade-up, .anim-fade-in, .anim-slide-right, .anim-slide-left, .anim-scale-in, .gold-line').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      document.getElementById('bar1').style.transform = menuOpen ? 'translateY(7px) rotate(45deg)' : '';
+      document.getElementById('bar2').style.opacity = menuOpen ? '0' : '1';
+      document.getElementById('bar3').style.transform = menuOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+        document.getElementById('bar1').style.transform = '';
+        document.getElementById('bar2').style.opacity = '1';
+        document.getElementById('bar3').style.transform = '';
+      });
+    });
+
+    // Categories tabs
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const categoryPanels = document.querySelectorAll('.category-panel');
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.category;
+
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        categoryPanels.forEach(panel => panel.classList.remove('active'));
+        document.getElementById('panel-' + target).classList.add('active');
+      });
+    });
+
+    // FAQ
+    document.querySelectorAll('.faq-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isOpen = item.getAttribute('data-open') === 'true';
+        item.setAttribute('data-open', isOpen ? 'false' : 'true');
+      });
+    });
+
+    // Product slider
+    const productTrack = document.getElementById('productTrack');
+    const scrollLeftBtn = document.getElementById('scrollLeft');
+    const scrollRightBtn = document.getElementById('scrollRight');
+
+    scrollLeftBtn.addEventListener('click', () => {
+      productTrack.scrollBy({ left: -320, behavior: 'smooth' });
+    });
+
+    scrollRightBtn.addEventListener('click', () => {
+      productTrack.scrollBy({ left: 320, behavior: 'smooth' });
+    });
+
+    let autoScrollDirection = 1;
+    setInterval(() => {
+      if (!productTrack) return;
+
+      const maxScrollLeft = productTrack.scrollWidth - productTrack.clientWidth;
+
+      if (productTrack.scrollLeft >= maxScrollLeft - 10) autoScrollDirection = -1;
+      if (productTrack.scrollLeft <= 10) autoScrollDirection = 1;
+
+      productTrack.scrollBy({ left: 300 * autoScrollDirection, behavior: 'smooth' });
+    }, 3500);
+
+    // Scroll progress, shadow, back to top
+    const header = document.getElementById('mainHeader');
+    const progressBar = document.getElementById('scrollProgress');
+    const backToTop = document.getElementById('backToTop');
+    const navLinks = document.querySelectorAll('#desktopNav a');
+
+    const sections = [...navLinks].map(link => {
+      const id = link.getAttribute('href');
+      return document.querySelector(id);
+    });
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+
+      header.style.boxShadow = scrollTop > 10 ? '0 4px 20px rgba(0,0,0,0.08)' : 'none';
+
+      if (scrollTop > 400) {
+        backToTop.style.opacity = '1';
+        backToTop.style.transform = 'translateY(0)';
+      } else {
+        backToTop.style.opacity = '0';
+        backToTop.style.transform = 'translateY(16px)';
+      }
+
+      let currentId = '#home';
+      sections.forEach(section => {
+        if (section) {
+          const top = section.offsetTop - 120;
+          if (scrollTop >= top) currentId = '#' + section.id;
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === currentId);
+      });
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+const aboutFeatures = document.querySelectorAll('#aboutFeatures .about-feature');
+  let aboutFeatureIndex = 0;
+
+  function rotateAboutFeatures() {
+    aboutFeatures.forEach((item, index) => {
+      item.classList.toggle('active', index === aboutFeatureIndex);
+    });
+
+    aboutFeatureIndex = (aboutFeatureIndex + 1) % aboutFeatures.length;
+  }
+
+  if (aboutFeatures.length) {
+    rotateAboutFeatures();
+    setInterval(rotateAboutFeatures, 1800);
+  }
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.innerHTML = '<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span> Sending...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = 'Send Inquiry <i data-lucide="send" style="width:16px;height:16px"></i>';
+        btn.disabled = false;
+        document.getElementById('formSuccess').classList.remove('hidden');
+        e.target.reset();
+        lucide.createIcons();
+
+        setTimeout(() => {
+          document.getElementById('formSuccess').classList.add('hidden');
+        }, 3500);
+      }, 1200);
+    });
+
+    const views = document.querySelectorAll('.category-view');
+let current = 0;
+let autoSlide;
+
+function showSlide(index){
+  views.forEach(v => v.classList.remove('active'));
+  views[index].classList.add('active');
+  current = index;
+}
+
+function startSlide(){
+  autoSlide = setInterval(()=>{
+    current = (current + 1) % views.length;
+    showSlide(current);
+  }, 3000);
+}
+
+function stopSlide(){
+  clearInterval(autoSlide);
+}
+
+const wrap = document.querySelector('.category-wrap');
+
+wrap.addEventListener('mouseenter', stopSlide);
+wrap.addEventListener('mouseleave', startSlide);
+
+showSlide(0);
+startSlide();
+  lucide.createIcons();
+  const whyItems = document.querySelectorAll('#whyGrid .why-item');
+let whyIndex = 0;
+let whyTimer;
+
+function setWhyActive(index){
+  whyItems.forEach((item, i) => {
+    item.classList.toggle('active', i === index);
+  });
+  whyIndex = index;
+}
+
+function startWhyAuto(){
+  whyTimer = setInterval(() => {
+    whyIndex = (whyIndex + 1) % whyItems.length;
+    setWhyActive(whyIndex);
+  }, 2200);
+}
+
+function stopWhyAuto(){
+  clearInterval(whyTimer);
+}
+
+whyItems.forEach((item, index) => {
+  item.addEventListener('mouseenter', () => {
+    stopWhyAuto();
+    setWhyActive(index);
+  });
+
+  item.addEventListener('mouseleave', () => {
+    startWhyAuto();
+  });
+
+  item.addEventListener('click', () => {
+    stopWhyAuto();
+    setWhyActive(index);
+    startWhyAuto();
+  });
+});
+
+setWhyActive(0);
+startWhyAuto();
+  </script>
+</body>
+</html>
