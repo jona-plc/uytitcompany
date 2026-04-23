@@ -348,11 +348,10 @@
 
 .category-wrap{
   position:relative;
-  width:100%;
+  width:105%;
   height:540px;
-  border-radius:34px;
   overflow:hidden;
-  box-shadow:0 25px 60px rgba(0,0,0,0.12);
+  box-shadow:0 15px 60px rgba(0,0,0,0.12);
 }
 
 /* each slide */
@@ -393,15 +392,8 @@
   letter-spacing:1px;
 }
 
-/* subtle animation */
-.category-view.active img{
-  animation:zoomSlow 6s ease forwards;
-}
 
-@keyframes zoomSlow{
-  from{ transform:scale(1); }
-  to{ transform:scale(1.08); }
-}
+
 
 @media (max-width:768px){
   .category-wrap{
@@ -702,39 +694,25 @@
     <!-- HEADING -->
     <div class="text-center mb-12">
       <p class="text-[11px] md:text-xs font-bold tracking-[0.28em] uppercase text-amber-600 mb-3">
-        Product Categories
+        TOP PICKS
       </p>
     </div>
 
-    <!-- IMAGE SLIDER -->
     <div class="category-wrap">
 
-      <!-- POWER -->
-      <div class="category-view active">
-        <img src="assets/power-tools.png" alt="Power Tools">
-        <div class="category-overlay">
-          <h3>Power Tools</h3>
-        </div>
-      </div>
+  <div class="category-view active">
+    <img src="assets/6291586206688547407.jpg" alt="Power Tools">
+  </div>
 
-      <!-- HAND -->
-      <div class="category-view">
-        <img src="assets/hand-tools.png" alt="Hand Tools">
-        <div class="category-overlay">
-          <h3>Hand Tools</h3>
-        </div>
-      </div>
+  <div class="category-view">
+    <img src="assets/hand-tools.png" alt="Hand Tools">
+  </div>
 
-      <!-- GARDEN -->
-      <div class="category-view">
-        <img src="assets/garden-tools.png" alt="Garden Tools">
-        <div class="category-overlay">
-          <h3>Garden Tools</h3>
-        </div>
-      </div>
+  <div class="category-view">
+    <img src="assets/garden-tools.png" alt="Garden Tools">
+  </div>
 
-    </div>
-
+</div>
   </div>
 </section>
 <section class="py-24 bg-[#f8f8f8]">
@@ -1371,26 +1349,25 @@ const aboutFeatures = document.querySelectorAll('#aboutFeatures .about-feature')
       }, 1200);
     });
 
-    const views = document.querySelectorAll('.category-view');
+const views = document.querySelectorAll('.category-view');
 let current = 0;
-let autoSlide;
 
-function showSlide(index){
+function showSlide(index) {
   views.forEach(v => v.classList.remove('active'));
   views[index].classList.add('active');
   current = index;
 }
 
-function startSlide(){
-  autoSlide = setInterval(()=>{
-    current = (current + 1) % views.length;
-    showSlide(current);
-  }, 3000);
+function nextSlide() {
+  current = (current + 1) % views.length;
+  showSlide(current);
 }
 
-function stopSlide(){
-  clearInterval(autoSlide);
-}
+// auto slide every 3 seconds
+setInterval(nextSlide, 3000);
+
+// init first slide
+showSlide(0);
 
 const wrap = document.querySelector('.category-wrap');
 
