@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | UY TIT & COMPANY, INC.</title>
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue: #0f2d5c;
+      --gold: #c9a227;
+      --site-max: 1180px;
+      --gutter: clamp(18px, 4vw, 56px);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    .site-container {
+      width: min(var(--site-max), calc(100% - var(--gutter) * 2));
+      margin-inline: auto;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: .25s;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: .3s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 430px;
+      opacity: 1;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+/* CLEAN NORMAL FILTER BAR */
+.catalogue-section {
+  background: #f6f6f4;
+  padding: 42px 0 60px;
+}
+
+.catalogue-wrap {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.catalogue-top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 34px;
+}
+
+.brand-select {
+  background: #ffffff;
+  color: #374151;
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: none;
+}
+
+.brand-select span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.brand-select select {
+  border: 1px solid #e5e7eb;
+  outline: 0;
+  background: #ffffff;
+  color: #1f2937;
+  border-radius: 8px;
+  padding: 7px 28px 7px 10px;
+  font-size: 13px;
+  min-width: 145px;
+}
+
+.search-box {
+  width: min(460px, 100%);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  height: 42px;
+  box-shadow: none;
+}
+
+.search-box input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  font-size: 13px;
+  background: transparent;
+}
+
+.search-box i {
+  width: 15px;
+  height: 15px;
+  color: #6b7280;
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .catalogue-section {
+    padding: 28px 0 45px;
+  }
+
+  .catalogue-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .brand-select {
+    width: 100%;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+
+  .brand-select select {
+    width: auto;
+    min-width: 160px;
+    padding: 7px 28px 7px 10px;
+    font-size: 13px;
+  }
+
+  .search-box {
+    width: 100%;
+    height: 42px;
+    border-radius: 10px;
+  }
+}
+
+    .catalogue-layout {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 40px;
+    }
+
+    .mini-label {
+      font-size: 12px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: #9a7651;
+      margin-bottom: 10px;
+    }
+
+    .catalogue-sidebar h2,
+    .catalogue-content h1 {
+      color: #050505;
+      font-size: 34px;
+      line-height: 1.05;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .side-line,
+    .content-line {
+      height: 1px;
+      background: #d9d2c6;
+      margin: 18px 0 22px;
+    }
+
+    .group-block {
+      border-bottom: 1px solid #d9d2c6;
+      padding: 18px 0;
+    }
+
+    .group-header {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .group-header strong {
+      font-size: 17px;
+      color: #111;
+    }
+
+    .group-header small {
+      color: #8b8b8b;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    .group-header span {
+      color: #9a7651;
+    }
+
+    .sub-group {
+      margin-top: 16px;
+      display: none;
+    }
+
+    .group-block.open .sub-group {
+      display: block;
+    }
+
+    .sub-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      padding: 7px 0 7px 20px;
+      color: #4b5563;
+      font-size: 14px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .sub-btn::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #d6c7a5;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 14px;
+    }
+
+    .sub-btn.active {
+      color: #c9a227;
+      font-weight: 600;
+    }
+
+    .catalogue-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .catalogue-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(0,0,0,.06);
+    }
+
+    .catalogue-img {
+      height: 180px;
+      background: #f7f6f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .catalogue-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 18px;
+    }
+
+    .catalogue-info {
+      padding: 14px;
+      background: white;
+    }
+
+    .catalogue-code {
+      font-size: 10px;
+      color: #8b8b8b;
+      margin-bottom: 6px;
+    }
+
+    .catalogue-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 5px;
+    }
+
+    .catalogue-desc {
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .empty-box {
+      background: white;
+      border-radius: 14px;
+      padding: 40px;
+      border: 1px solid #e5e7eb;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .catalogue-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .catalogue-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-container {
+        width: min(100% - 32px, var(--site-max));
+      }
+
+      .topbar-info {
+        justify-content: flex-start;
+        text-align: left;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .topbar-info span {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .catalogue-section {
+        padding: 40px 0;
+      }
+
+      .catalogue-top {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .brand-select {
+        justify-content: space-between;
+      }
+
+      .brand-select select {
+        width: 65%;
+        min-width: 0;
+      }
+
+      .catalogue-sidebar h2,
+      .catalogue-content h1 {
+        font-size: 28px;
+      }
+
+      .catalogue-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+ <body class="h-full font-body text-gray-800 bg-white overflow-x-hidden">
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- TOPBAR -->
+  <div class="bg-gray-50 border-b border-gray-100 text-xs anim-fade-in visible">
+    <div class="max-w-7xl mx-auto px-5 py-2.5 flex flex-wrap justify-between items-center gap-2">
+      <div class="flex flex-wrap gap-4 items-center text-gray-600">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="phone" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>(02) 8 2429566</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="map-pin" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>314 DASMARINAS STREET, BINONDO MANILA, Philippines</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="mail" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>utcimanila@gmail.com</span>
+        </span>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 min-w-0">
+       <div class="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
+  <img src="assets/logo.png" alt="UY TIT Logo" class="w-full h-full object-contain">
+</div>
+        <div class="min-w-0">
+          <h2 class="font-heading font-bold text-sm text-[#0f2d5c] truncate">UY TIT & COMPANY, INC.</h2>
+          <p class="text-[10px] text-gray-500 truncate">Hardware Tools, Power Tools & Industrial Products</p>
+        </div>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-6" id="desktopNav">
+        <a href="index.html" class="nav-link  text-[#0f2d5c] font-bold text-sm">Home</a>
+        <a href="about.html" class="nav-link text-[#0f2d5c] font-bold text-sm">About</a>
+        <a href="#categories" class="nav-link text-[#0f2d5c] font-bold text-sm">Categories</a>
+        <a href="products.html" class="nav-link active text-[#0f2d5c] font-bold text-sm">Products</a>
+        <a href="brand.html" class="nav-link text-[#0f2d5c] font-bold text-sm">Brands</a>
+        <a href="#contact" class="nav-link text-[#0f2d5c] font-bold text-sm">Contact</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#contact" class="bg-[#0f2d5c] text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-[#1a4a8a] transition-all duration-300 hover:shadow-lg">
+          Request a Quote
+        </a>
+      </div>
+
+      <button class="lg:hidden w-10 h-10 border border-gray-200 rounded-lg flex flex-col items-center justify-center gap-1 bg-white" id="menuToggle" aria-label="Toggle menu">
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar1"></span>
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar2"></span>
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar3"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu lg:hidden bg-white border-t border-gray-100" id="mobileMenu">
+      <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-3">
+        <a href="index.html" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Home</a>
+        <a href="about.html" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">About</a>
+        <a href="#categories" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Categories</a>
+        <a href="products.html" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Products</a>
+        <a href="brand.html" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Brands</a>
+        <a href="#contact" class="text-[#0f2d5c] font-bold text-sm py-2">Contact</a>
+        <a href="#contact" class="bg-[#0f2d5c] text-white text-center py-3 rounded-full text-xs font-bold mt-2">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CATALOGUE -->
+  <section class="catalogue-section">
+    <div class="catalogue-wrap">
+
+      <div class="catalogue-top">
+        <div class="brand-select">
+          <span>Brand</span>
+          <select id="brandSelect">
+            <option value="abloy">Abloy</option>
+            <option value="assab">Assab</option>
+            <option value="deli">Deli</option>
+            <option value="fleco">Flexco</option>
+            <option value="gestar">Gestar</option>
+            <option value="hunter">Hunter</option>
+            <option value="indestro">Indestro</option>
+            <option value="jb">John Benzen</option>
+            <option value="kuko">Kukko</option>
+            <option value="masus">Masus</option>
+            <option value="mitsui">Mitsui</option>
+            <option value="nexus">Nexus</option>
+            <option value="pressol">Pressol</option>
+            <option value="sg">SG</option>
+            <option value="solinnflex" selected>Solinnflex</option>
+            <option value="texas">Texas</option>
+            <option value="tramontina">Tramontina</option>
+            <option value="tungatip">Tungatip</option>
+            <option value="womaco">Womaco</option>
+          </select>
+        </div>
+
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Hello, what are you looking for today?">
+          <i data-lucide="search" style="width:18px;height:18px"></i>
+        </div>
+      </div>
+
+      <div class="catalogue-layout">
+
+        <aside class="catalogue-sidebar">
+          <p class="mini-label">Selected Brand</p>
+          <h2 id="brandTitle">Solinnflex Catalogue</h2>
+          <div class="side-line"></div>
+          <div id="groupList"></div>
+        </aside>
+
+        <main class="catalogue-content">
+          <p class="mini-label">Selected Group</p>
+          <h1 id="groupTitle">Garden Hose</h1>
+          <div class="content-line"></div>
+          <div id="catalogueGrid" class="catalogue-grid"></div>
+        </main>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="bg-[#0f2d5c] text-white pt-16 pb-8">
+    <div class="site-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+              <img src="assets/logo.png" alt="UY TIT Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-white">UY TIT & COMPANY, INC.</p>
+              <p class="text-[10px] text-[#f7e7a4]">Trusted Distributor</p>
+            </div>
+          </div>
+          <p class="text-xs text-white/70 leading-relaxed">
+            Supplying hardware tools, power tools, industrial products, gardening supplies, and dependable business solutions trusted across the Philippines.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Quick Links</h4>
+          <ul class="space-y-2.5">
+            <li><a href="index.html" class="text-xs text-white/70 hover:text-[#f7e7a4]">Home</a></li>
+            <li><a href="about.html" class="text-xs text-white/70 hover:text-[#f7e7a4]">About</a></li>
+            <li><a href="product.html" class="text-xs text-white/70 hover:text-[#f7e7a4]">Products</a></li>
+            <li><a href="brands.html" class="text-xs text-white/70 hover:text-[#f7e7a4]">Brands</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Main Categories</h4>
+          <ul class="space-y-2.5 text-xs text-white/70">
+            <li>Hardware Tools</li>
+            <li>Power Tools</li>
+            <li>Industrial Products</li>
+            <li>Gardening Supplies</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Contact Info</h4>
+          <ul class="space-y-3 text-xs text-white/70">
+            <li>314 Dasmarinas Street, Binondo Manila, Philippines</li>
+            <li>(02) 8 2429566</li>
+            <li>utcimanila@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6">
+        <p class="text-xs text-white/50">© 1868 UY TIT & COMPANY, INC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const brandNames = {
+      abloy: "Abloy",
+      assab: "Assab",
+      deli: "Deli",
+      fleco: "Flexco",
+      gestar: "Gestar",
+      hunter: "Hunter",
+      indestro: "Indestro",
+      jb: "John Benzen",
+      kuko: "Kukko",
+      masus: "Masus",
+      mitsui: "Mitsui",
+      nexus: "Nexus",
+      pressol: "Pressol",
+      sg: "SG",
+      solinnflex: "Solinnflex",
+      texas: "Texas",
+      tramontina: "Tramontina",
+      tungatip: "Tungatip",
+      womaco: "Womaco"
+    };
+
+    const catalogue = {
+      solinnflex: {
+        name: "Solinnflex",
+        groups: [
+          {
+            title: "Hose & Accessories",
+            page: "P01-12",
+            subgroups: [
+              {
+                id: "garden-hose",
+                name: "Garden Hose",
+                products: [
+                  { code: "SLNFX-GH15", name: "Garden Hose 15m", desc: '1/2" x 12mm x 16mm x 15m garden hose.', image: "assets/green-hose.png" },
+                  { code: "SLNFX-GH30", name: "Garden Hose 30m", desc: '1/2" x 12mm x 16mm x 30m garden hose.', image: "assets/green-hose.png" },
+                  { code: "SLNFX-GH100", name: "Garden Hose 100m", desc: '1/2" x 12mm x 16mm x 100m garden hose.', image: "assets/green-hose.png" }
+                ]
+              },
+              {
+                id: "reinforced-hose",
+                name: "Reinforced Hose",
+                products: [
+                  { code: "SLNFX-BCRH12", name: "Braided Chemical Reinforced Hose", desc: '1/2" x 13mm x 17mm x 100m reinforced hose.', image: "assets/white-hose.png" },
+                  { code: "SLNFX-BCRH34", name: "Braided Chemical Reinforced Hose", desc: '3/4" x 19mm x 24mm x 50m reinforced hose.', image: "assets/white-hose.png" }
+                ]
+              },
+              {
+                id: "teflon",
+                name: "Teflon Tape",
+                products: [
+                  { code: "SLNFX-TT12", name: "Teflon Tape", desc: "1/2 x 10m thread sealing tape.", image: "assets/teflon-tape.png" },
+                  { code: "SLNFX-TT34", name: "Teflon Tape", desc: "3/4 x 10m thread sealing tape.", image: "assets/teflon-tape.png" }
+                ]
+              }
+            ]
+          },
+          {
+            title: "Brush & Abrasives",
+            page: "P04-12",
+            subgroups: [
+              {
+                id: "cup-brush",
+                name: "Cup Brush",
+                products: [
+                  { code: "SLNFX-A8831", name: "Cup Brush", desc: '2" cup brush in blister packaging with arbor.', image: "assets/cup-brush.png" },
+                  { code: "SLNFX-CBO1", name: "Cup Brush Ordinary", desc: "65mm x M10 x 1.25 cup brush.", image: "assets/cup-brush.png" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+
+      tramontina: {
+        name: "Tramontina",
+        groups: [
+          {
+            title: "Garden Tools",
+            page: "P01-39",
+            subgroups: [
+              {
+                id: "watering",
+                name: "Watering Tools",
+                products: [
+                  { code: "78508/600", name: "Quick Coupler with Aquastop", desc: "Plastic quick connector with aquastop for 5/8-inch and 3/4-inch hoses.", image: "assets/tramontina-coupler.png" },
+                  { code: "78506/600", name: "Hose Connector", desc: "Plastic quick connector for 5/8-inch and 3/4-inch hoses.", image: "assets/tramontina-connector.png" },
+                  { code: "78514/500", name: "Sprayer Thread", desc: "Plastic sprayer with thread connector and adjustable spray.", image: "assets/tramontina-sprayer.png" },
+                  { code: "78520/500", name: "Cleaner Gun Spray", desc: "Cleaner spray gun with rubberized anatomic handle.", image: "assets/tramontina-cleaner-gun.png" }
+                ]
+              },
+              {
+                id: "hose",
+                name: "Hose",
+                products: [
+                  { code: "79182/156", name: "Garden Hose White", desc: "15m PVC fiber hose with adjustable sprayer and adapter.", image: "assets/tramontina-hose-white.png" },
+                  { code: "79173/150", name: "Garden Hose Green", desc: "15m green PVC fiber hose with adjustable sprayer.", image: "assets/tramontina-hose-green.png" },
+                  { code: "28428/287", name: "Garden Hose Yellow", desc: "28m yellow garden hose.", image: "assets/tramontina-hose-yellow.png" }
+                ]
+              },
+              {
+                id: "shovel",
+                name: "Shovel",
+                products: [
+                  { code: "77470/424", name: "Round Point Shovel", desc: "Round point shovel with 71 cm wood handle.", image: "assets/tramontina-shovel.png" },
+                  { code: "77424/404", name: "Spade Shovel", desc: "Spade shovel with 71 cm wood handle.", image: "assets/tramontina-spade.png" }
+                ]
+              },
+              {
+                id: "pruning",
+                name: "Pruning Tools",
+                products: [
+                  { code: "78382/771", name: "Professional Steel Pruning Saw", desc: "13-inch pruning saw with 145 cm wood handle.", image: "assets/tramontina-pruning-saw.png" },
+                  { code: "78330/125", name: "Hedge Shears", desc: "11-inch hedge shears with metal blades and wood handles.", image: "assets/tramontina-hedge-shears.png" }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    };
+
+    const brandSelect = document.getElementById("brandSelect");
+    const groupList = document.getElementById("groupList");
+    const brandTitle = document.getElementById("brandTitle");
+    const groupTitle = document.getElementById("groupTitle");
+    const catalogueGrid = document.getElementById("catalogueGrid");
+    const searchInput = document.getElementById("searchInput");
+
+    let currentBrand = brandSelect.value;
+    let currentSubgroup = null;
+
+    function getAllSubgroups(brand) {
+      if (!catalogue[brand]) return [];
+      return catalogue[brand].groups.flatMap(group => group.subgroups);
+    }
+
+    function renderNoData() {
+      const brandName = brandNames[currentBrand] || currentBrand;
+      brandTitle.textContent = `${brandName} Catalogue`;
+      groupTitle.textContent = "No catalogue yet";
+
+      groupList.innerHTML = `
+        <div class="empty-box">
+          Product groups for this brand are not added yet.
+        </div>
+      `;
+
+      catalogueGrid.innerHTML = `
+        <div class="empty-box">
+          Products for ${brandName} are not available yet. You can add them later in the catalogue data.
+        </div>
+      `;
+    }
+
+    function renderSidebar() {
+      if (!catalogue[currentBrand]) {
+        renderNoData();
+        return;
+      }
+
+      const data = catalogue[currentBrand];
+      brandTitle.textContent = `${data.name} Catalogue`;
+
+      groupList.innerHTML = data.groups.map((group, groupIndex) => `
+        <div class="group-block ${groupIndex === 0 ? "open" : ""}">
+          <button class="group-header" type="button">
+            <div>
+              <strong>${group.title}</strong>
+              <small>${group.page}</small>
+            </div>
+            <span>›</span>
+          </button>
+
+          <div class="sub-group">
+            ${group.subgroups.map(sub => `
+              <button class="sub-btn ${sub.id === currentSubgroup ? "active" : ""}" data-subgroup="${sub.id}">
+                ${sub.name}
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      `).join("");
+
+      document.querySelectorAll(".group-header").forEach(header => {
+        header.addEventListener("click", () => {
+          header.closest(".group-block").classList.toggle("open");
+        });
+      });
+
+      document.querySelectorAll(".sub-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          currentSubgroup = btn.dataset.subgroup;
+          renderSidebar();
+          renderProducts();
+        });
+      });
+    }
+
+    function renderProducts() {
+      if (!catalogue[currentBrand]) {
+        renderNoData();
+        return;
+      }
+
+      const subgroups = getAllSubgroups(currentBrand);
+      const selected = subgroups.find(sub => sub.id === currentSubgroup);
+
+      if (!selected) return;
+
+      groupTitle.textContent = selected.name;
+
+      const keyword = searchInput.value.toLowerCase().trim();
+
+      const products = selected.products.filter(product => {
+        return (
+          product.name.toLowerCase().includes(keyword) ||
+          product.code.toLowerCase().includes(keyword) ||
+          product.desc.toLowerCase().includes(keyword)
+        );
+      });
+
+      catalogueGrid.innerHTML = products.length
+        ? products.map(product => `
+          <article class="catalogue-card">
+            <div class="catalogue-img">
+              <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="catalogue-info">
+              <p class="catalogue-code">${product.code}</p>
+              <h3 class="catalogue-name">${product.name}</h3>
+              <p class="catalogue-desc">${product.desc}</p>
+            </div>
+          </article>
+        `).join("")
+        : `<div class="empty-box">No product matched your search.</div>`;
+    }
+
+    function setBrand(brand) {
+      currentBrand = brand;
+
+      if (!catalogue[currentBrand]) {
+        currentSubgroup = null;
+        renderNoData();
+        return;
+      }
+
+      const firstSubgroup = getAllSubgroups(currentBrand)[0];
+      currentSubgroup = firstSubgroup.id;
+
+      renderSidebar();
+      renderProducts();
+    }
+
+    brandSelect.addEventListener("change", () => {
+      setBrand(brandSelect.value);
+    });
+
+    searchInput.addEventListener("input", renderProducts);
+
+    const params = new URLSearchParams(window.location.search);
+    const brandFromUrl = params.get("brand");
+
+    if (brandFromUrl && brandNames[brandFromUrl]) {
+      brandSelect.value = brandFromUrl;
+      setBrand(brandFromUrl);
+    } else {
+      setBrand(currentBrand);
+    }
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+    }
+  </script>
+</body>
+</html>
