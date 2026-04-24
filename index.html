@@ -1414,7 +1414,6 @@ const aboutFeatures = document.querySelectorAll('#aboutFeatures .about-feature')
         }, 3500);
       }, 1200);
     });
-lucide.createIcons();
 const views = document.querySelectorAll('.category-view');
 const wrap = document.querySelector('.category-wrap');
 
@@ -1497,6 +1496,10 @@ whyItems.forEach((item, index) => {
 
 setWhyActive(0);
 startWhyAuto();
+
+  window.addEventListener("load", () => {
+    lucide.createIcons();
+  });
 
   </script>
 </body>
