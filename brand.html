@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brands | UY TIT & COMPANY, INC.</title>
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue: #0f2d5c;
+      --gold: #c9a227;
+      --site-max: 1180px;
+      --gutter: clamp(18px, 4vw, 56px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    .site-container {
+      width: min(var(--site-max), calc(100% - var(--gutter) * 2));
+      margin-inline: auto;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: var(--gold);
+      z-index: 9999;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color .25s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 999px;
+      transition: width .25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .35s ease, opacity .25s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 430px;
+      opacity: 1;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      color: var(--blue);
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      font-weight: 600;
+    }
+
+    .body-copy {
+      color: #5f6673;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .brand-card {
+      border: 1px solid #edf0f3;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px;
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-4px);
+      border-color: #e0e6ee;
+      box-shadow: 0 18px 40px rgba(15,45,92,.08);
+    }
+
+    .brand-logo {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .brand-logo img {
+      max-height: 58px;
+      max-width: 150px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-category {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #c9a227;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .filter-btn {
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      color: #475569;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: .25s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .site-container {
+        width: min(100% - 32px, var(--site-max));
+      }
+
+      .topbar-info {
+        justify-content: flex-start;
+        text-align: left;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .topbar-info span {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .brand-card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- TOPBAR -->
+  <div class="bg-gray-50 border-b border-gray-100 text-xs">
+    <div class="site-container py-2.5 flex flex-wrap justify-start md:justify-between items-start md:items-center gap-2">
+      <div class="topbar-info flex flex-wrap gap-4 items-center text-gray-600">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="phone" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>(02) 8 2429566</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="map-pin" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>314 Dasmarinas Street, Binondo Manila, Philippines</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="mail" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>utcimanila@gmail.com</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50" id="mainHeader">
+    <div class="site-container py-3 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 min-w-0">
+        <div class="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
+          <img src="assets/logo.png" alt="UY TIT Logo" class="w-full h-full object-contain">
+        </div>
+        <div class="min-w-0">
+          <h2 class="font-semibold text-sm text-[#0f2d5c] truncate">UY TIT & COMPANY, INC.</h2>
+          <p class="text-[10px] text-gray-500 truncate">Hardware Tools, Power Tools & Industrial Products</p>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6" id="desktopNav">
+        <a href="index.html" class="nav-link text-[#0f2d5c] font-semibold text-sm">Home</a>
+        <a href="about.html" class="nav-link text-[#0f2d5c] font-semibold text-sm">About</a>
+        <a href="#categories" class="nav-link text-[#0f2d5c] font-semibold text-sm">Categories</a>
+        <a href="product.html" class="nav-link text-[#0f2d5c] font-semibold text-sm">Products</a>
+        <a href="brand.html" class="nav-link active text-[#0f2d5c] font-semibold text-sm">Brands</a>
+        <a href="#contact" class="nav-link text-[#0f2d5c] font-semibold text-sm">Contact</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#contact" class="bg-[#0f2d5c] text-white px-5 py-2.5 rounded-full text-xs font-semibold hover:bg-[#1a4a8a] transition-all duration-300">
+          Request a Quote
+        </a>
+      </div>
+
+      <button class="lg:hidden w-10 h-10 border border-gray-200 rounded-lg flex flex-col items-center justify-center gap-1 bg-white" id="menuToggle" aria-label="Toggle menu">
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar1"></span>
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar2"></span>
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar3"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu lg:hidden bg-white border-t border-gray-100" id="mobileMenu">
+      <div class="site-container py-4 flex flex-col gap-3">
+        <a href="index.html" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">Home</a>
+        <a href="about.html" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">About</a>
+        <a href="#categories" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">Categories</a>
+        <a href="product.html" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">Products</a>
+        <a href="brand.html" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">Brands</a>
+        <a href="#contact" class="text-[#0f2d5c] font-semibold text-sm py-2">Contact</a>
+        <a href="#contact" class="bg-[#0f2d5c] text-white text-center py-3 rounded-full text-xs font-semibold mt-2">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="py-20 md:py-24 bg-white border-b border-gray-100">
+    <div class="site-container">
+      <div class="max-w-3xl reveal">
+        <p class="section-label mb-4">Partner Brands</p>
+        <h1 class="section-title mb-5">
+          Brands trusted by Uy Tit & Company.
+        </h1>
+        <p class="body-copy">
+          We work with established partner brands across hardware tools, industrial products,
+          safety equipment, automotive tools, hardware accessories, gardening, and agriculture.
+        </p>
+      </div>
+    </div>
+  </section>
+<!-- FILTERS -->
+<section class="py-8 bg-gray-50 border-b border-gray-100">
+  <div class="site-container">
+    <div class="max-w-xs">
+      <label for="brandFilter" class="block text-xs font-semibold text-[#0f2d5c] mb-2">
+        Filter Brands
+      </label>
+
+      <select
+        id="brandFilter"
+        class="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0f2d5c]"
+      >
+        <option value="all">All Brands</option>
+        <option value="hand">Hand Tools</option>
+        <option value="industrial">Industrial</option>
+        <option value="safety">Safety</option>
+        <option value="garden">Garden</option>
+        <option value="accessories">Accessories</option>
+        <option value="automotive">Automotive</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+  <!-- BRANDS GRID -->
+  <section class="py-16 bg-white">
+    <div class="site-container">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="brandGrid">
+
+        <article class="brand-card" data-category="accessories">
+          <div class="brand-logo"><img src="assets/abloy.png" alt="Abloy Logo"></div>
+          <p class="brand-category">Locks & Security</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Abloy</h3>
+          <p class="body-copy mt-2">Security and lock solutions for hardware and industrial use.</p>
+          <a href="product.html?brand=abloy" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="accessories industrial">
+          <div class="brand-logo"><img src="assets/assab.png" alt="Assab Logo"></div>
+          <p class="brand-category">Tool Steel</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Assab</h3>
+          <p class="body-copy mt-2">Tool steel solutions known for quality standards and metalworking applications.</p>
+          <a href="product.html?brand=assab" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="hand">
+          <div class="brand-logo"><img src="assets/deli.png" alt="Deli Logo"></div>
+          <p class="brand-category">Tools & Hardware</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Deli</h3>
+          <p class="body-copy mt-2">A tools brand with a broad product portfolio for one-stop tool needs.</p>
+          <a href="product.html?brand=deli" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="industrial">
+          <div class="brand-logo"><img src="assets/fleco.png" alt="Flexco Logo"></div>
+          <p class="brand-category">Conveyor Solutions</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Flexco</h3>
+          <p class="body-copy mt-2">Products for belt conveyor performance, reliability, and maintenance support.</p>
+          <a href="product.html?brand=fleco" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="hand">
+          <div class="brand-logo"><img src="assets/gestar.png" alt="Gestar Logo"></div>
+          <p class="brand-category">Hand Tools</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Gestar</h3>
+          <p class="body-copy mt-2">A hand tool brand offering thousands of tool products for multiple applications.</p>
+          <a href="product.html?brand=gestar" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="hand industrial">
+          <div class="brand-logo"><img src="assets/hunter.png" alt="Hunter Logo"></div>
+          <p class="brand-category">German Tools</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Hunter</h3>
+          <p class="body-copy mt-2">High-quality tools supplied across industrial sectors and hardware retail.</p>
+         <a href="product.html?brand=hunter"
+   class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+  View Products
+</a>
+        </article>
+
+        <article class="brand-card" data-category="industrial safety">
+          <div class="brand-logo"><img src="assets/indestro.png" alt="Indestro Logo"></div>
+          <p class="brand-category">Home Brand</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Indestro</h3>
+          <p class="body-copy mt-2">Uy Tit home brand for tools, safety products, industrial products, and consumables.</p>
+          <a href="product.html?brand=indestro" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="hand safety garden">
+          <div class="brand-logo"><img src="assets/jb.png" alt="John Benzen Logo"></div>
+          <p class="brand-category">Home Brand</p>
+          <h3 class="font-semibold text-[#0f2d5c]">John Benzen</h3>
+          <p class="body-copy mt-2">Home brand offering hand tools, safety products, and agricultural products.</p>
+          <a href="product.html?brand=jb" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="industrial">
+          <div class="brand-logo"><img src="assets/kuko.png" alt="Kukko Logo"></div>
+          <p class="brand-category">Pulling Tools</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Kukko</h3>
+          <p class="body-copy mt-2">A Germany-based brand known for pullers and specialized tool solutions.</p>
+          <a href="product.html?brand=kuko" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="industrial">
+          <div class="brand-logo"><img src="assets/masus.png" alt="Masus Logo"></div>
+          <p class="brand-category">Industrial Supply</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Masus</h3>
+          <p class="body-copy mt-2">Industrial supply brand supporting hardware and operational requirements.</p>
+          <a href="product.html?brand=masus" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="safety accessories">
+          <div class="brand-logo"><img src="assets/mitsui.png" alt="Mitsui Logo"></div>
+          <p class="brand-category">Safety & Abrasives</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Mitsui</h3>
+          <p class="body-copy mt-2">Quality safety products and abrasives for tool and workplace needs.</p>
+         <a href="product.html?brand=mitsui"
+   class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+  View Products
+</a>
+        </article>
+
+        <article class="brand-card" data-category="industrial">
+          <div class="brand-logo"><img src="assets/nexus.png" alt="Nexus Logo"></div>
+          <p class="brand-category">Pullers</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Nexus</h3>
+          <p class="body-copy mt-2">German pullers and special tools for pulling and extracting tasks.</p>
+          <a href="product.html?brand=nexus" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="automotive industrial">
+          <div class="brand-logo"><img src="assets/pressol.png" alt="Pressol Logo"></div>
+          <p class="brand-category">Lubrication Equipment</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Pressol</h3>
+          <p class="body-copy mt-2">German lubrication and garage equipment technology for automotive use.</p>
+         <a href="product.html?brand=pressol"
+   class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+  View Products
+</a>
+        </article>
+
+        <article class="brand-card" data-category="hand">
+          <div class="brand-logo"><img src="assets/sg.png" alt="SG Logo"></div>
+          <p class="brand-category">Hand Tools</p>
+          <h3 class="font-semibold text-[#0f2d5c]">SG</h3>
+          <p class="body-copy mt-2">Tool brand supporting common hand tool and hardware needs.</p>
+          <a href="product.html?brand=sg" class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+            View Products
+          </a>
+        </article>
+
+        <article class="brand-card" data-category="accessories">
+          <div class="brand-logo"><img src="assets/solinnflex.png" alt="Solinnflex Logo"></div>
+          <p class="brand-category">Abrasives</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Solinnflex</h3>
+          <p class="body-copy mt-2">Abrasive products including sandpaper, saw blades, sanding discs, and flap discs.</p>
+         <a href="product.html?brand=solinnflex"
+   class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+  View Products
+</a>
+        </article>
+
+        <article class="brand-card" data-category="garden">
+          <div class="brand-logo"><img src="assets/texas.png" alt="Texas Logo"></div>
+          <p class="brand-category">Garden Machines</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Texas</h3>
+          <p class="body-copy mt-2">Garden machine brand with roots in cultivator production and agricultural equipment.</p>
+       <a href="product.html?brand=texas"
+   class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+  View Products
+</a>
+        </article>
+
+        <article class="brand-card" data-category="garden">
+          <div class="brand-logo"><img src="assets/tramontina.png" alt="Tramontina Logo"></div>
+          <p class="brand-category">Garden Tools</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Tramontina</h3>
+          <p class="body-copy mt-2">Known for garden tools, metalwares, machete knives, cookware, and related products.</p>
+        <a href="product.html?brand=tramontina"
+   class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+  View Products
+</a>
+        </article>
+
+        <article class="brand-card" data-category="accessories industrial">
+          <div class="brand-logo"><img src="assets/tungatip.png" alt="Tungatip Logo"></div>
+          <p class="brand-category">Tool Bits</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Tungatip</h3>
+          <p class="body-copy mt-2">Carbide tool bits used for metal fabrication and lathe machine applications.</p>
+         <a href="product.html?brand=tungatip"
+   class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+  View Products
+</a>
+        </article>
+
+        <article class="brand-card" data-category="accessories industrial">
+          <div class="brand-logo"><img src="assets/womaco.png" alt="Womaco Logo"></div>
+          <p class="brand-category">Cutting Tools</p>
+          <h3 class="font-semibold text-[#0f2d5c]">Womaco</h3>
+          <p class="body-copy mt-2">German cutting tool brand known for band saw blades and cutting solutions.</p>
+        <a href="product.html?brand=womaco"
+   class="mt-auto pt-4 text-small font-medium text-[#0f2d5c] hover:text-amber-600 inline-flex items-center gap-1 transition">
+  View Products
+</a>
+        </article>
+        
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gray-50 border-t border-gray-100">
+    <div class="site-container">
+      <div class="max-w-3xl">
+        <p class="section-label mb-4">Brand Inquiries</p>
+        <h2 class="text-2xl md:text-3xl font-semibold text-[#0f2d5c] mb-4">
+          Looking for products from a specific brand?
+        </h2>
+        <p class="body-copy">
+          Contact our team for availability, product categories, and quotation requests.
+        </p>
+        <a href="#contact" class="mt-7 inline-flex items-center gap-2 bg-[#0f2d5c] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#1a4a8a] transition">
+          Contact Us
+          <i data-lucide="phone" style="width:16px;height:16px"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="bg-[#0f2d5c] text-white pt-16 pb-8">
+    <div class="site-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+              <img src="assets/logo.png" alt="UY TIT Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-white">UY TIT & COMPANY, INC.</p>
+              <p class="text-[10px] text-[#f7e7a4]">Trusted Distributor</p>
+            </div>
+          </div>
+          <p class="text-xs text-white/70 leading-relaxed">
+            Supplying hardware tools, power tools, industrial products, gardening supplies, and dependable business solutions trusted across the Philippines.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Quick Links</h4>
+          <ul class="space-y-2.5">
+            <li><a href="index.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">About</a></li>
+            <li><a href="categories" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Categories</a></li>
+            <li><a href="product.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Products</a></li>
+            <li><a href="brands.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Brands</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Main Categories</h4>
+          <ul class="space-y-2.5">
+            <li><span class="text-xs text-white/70">Hardware Tools</span></li>
+            <li><span class="text-xs text-white/70">Power Tools</span></li>
+            <li><span class="text-xs text-white/70">Industrial Products</span></li>
+            <li><span class="text-xs text-white/70">Gardening Supplies</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Contact Info</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2 text-xs text-white/70">
+              <i data-lucide="map-pin" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0 mt-0.5"></i>
+              314 Dasmarinas Street, Binondo Manila, Philippines
+            </li>
+            <li class="flex items-center gap-2 text-xs text-white/70">
+              <i data-lucide="phone" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0"></i>
+              (02) 8 2429566
+            </li>
+            <li class="flex items-center gap-2 text-xs text-white/70">
+              <i data-lucide="mail" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0"></i>
+              utcimanila@gmail.com
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-wrap justify-between items-center gap-4">
+        <p class="text-xs text-white/50">© 1868 UY TIT & COMPANY, INC. All rights reserved.</p>
+
+        <div class="flex gap-3">
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="facebook" style="width:14px;height:14px"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="instagram" style="width:14px;height:14px"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="linkedin" style="width:14px;height:14px"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const bar1 = document.getElementById("bar1");
+    const bar2 = document.getElementById("bar2");
+    const bar3 = document.getElementById("bar3");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+
+      const open = mobileMenu.classList.contains("open");
+      bar1.style.transform = open ? "translateY(6px) rotate(45deg)" : "none";
+      bar2.style.opacity = open ? "0" : "1";
+      bar3.style.transform = open ? "translateY(-6px) rotate(-45deg)" : "none";
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        bar1.style.transform = "none";
+        bar2.style.opacity = "1";
+        bar3.style.transform = "none";
+      });
+    });
+
+    const progress = document.getElementById("scrollProgress");
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const width = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress.style.width = width + "%";
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  const brandFilter = document.getElementById("brandFilter");
+const brandCards = document.querySelectorAll(".brand-card");
+
+brandCards.forEach(card => {
+  card.style.display = "flex";
+});
+
+brandFilter.addEventListener("change", () => {
+  const filter = brandFilter.value;
+
+  brandCards.forEach(card => {
+    const categories = card.dataset.category || "";
+    const show = filter === "all" || categories.includes(filter);
+    card.style.display = show ? "flex" : "none";
+  });
+});
+  </script>
+</body>
+</html>
