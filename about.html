@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | UY TIT & COMPANY, INC.</title>
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue: #0f2d5c;
+      --gold: #c9a227;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --site-max: 1180px;
+      --gutter: clamp(18px, 4vw, 56px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .site-container {
+      width: min(var(--site-max), calc(100% - var(--gutter) * 2));
+      margin-inline: auto;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+      z-index: 9999;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.25s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.25s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 430px;
+      opacity: 1;
+    }
+
+    .top-image {
+      width: 100%;
+      height: clamp(240px, 34vw, 430px);
+      overflow: hidden;
+      border-bottom: 1px solid #eef0f3;
+    }
+
+    .top-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .page-hero {
+      padding: clamp(44px, 7vw, 76px) 0;
+      background: #ffffff;
+      border-bottom: 1px solid #eef0f3;
+    }
+
+    .section-pad {
+      padding: clamp(56px, 7vw, 82px) 0;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      color: var(--blue);
+      font-size: clamp(25px, 3.2vw, 38px);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      font-weight: 600;
+    }
+
+    .body-copy {
+      color: #5f6673;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+   
+   .info-row {
+  display: grid;
+  grid-template-columns: 115px 1fr;
+  gap: 26px;
+  padding: 20px 0;
+  border: none;
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: none;
+}
+
+.value-item {
+  padding: 28px;
+  border: none;
+}
+
+.contact-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .value-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-container {
+        width: min(100% - 32px, var(--site-max));
+      }
+
+      .topbar-info {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .section-title {
+        font-size: 25px;
+      }
+    }
+    @media (max-width: 640px) {
+  .topbar-info {
+    justify-content: flex-start;
+    text-align: left;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .topbar-info span {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- TOPBAR -->
+  <div class="bg-gray-50 border-b border-gray-100 text-xs">
+    <div class="site-container py-2.5 flex flex-wrap justify-between items-center gap-2">
+      <div class="topbar-info flex flex-wrap gap-4 items-center text-gray-600">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="phone" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>(02) 8 2429566</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="map-pin" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>314 Dasmarinas Street, Binondo Manila, Philippines</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="mail" style="width:13px;height:13px" class="text-amber-600"></i>
+          <span>utcimanila@gmail.com</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50" id="mainHeader">
+    <div class="site-container py-3 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 min-w-0">
+        <div class="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
+          <img src="assets/logo.png" alt="UY TIT Logo" class="w-full h-full object-contain">
+        </div>
+        <div class="min-w-0">
+          <h2 class="font-semibold text-sm text-[#0f2d5c] truncate">UY TIT & COMPANY, INC.</h2>
+          <p class="text-[10px] text-gray-500 truncate">Hardware Tools, Power Tools & Industrial Products</p>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6" id="desktopNav">
+        <a href="index.html" class="nav-link text-[#0f2d5c] font-semibold text-sm">Home</a>
+        <a href="about.html" class="nav-link active text-[#0f2d5c] font-semibold text-sm">About</a>
+        <a href="index.html#categories" class="nav-link text-[#0f2d5c] font-semibold text-sm">Categories</a>
+        <a href="product.html" class="nav-link text-[#0f2d5c] font-semibold text-sm">Products</a>
+        <a href="brands.html" class="nav-link text-[#0f2d5c] font-semibold text-sm">Brands</a>
+        <a href="#contact" class="nav-link text-[#0f2d5c] font-semibold text-sm">Contact</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#contact" class="bg-[#0f2d5c] text-white px-5 py-2.5 rounded-full text-xs font-semibold hover:bg-[#1a4a8a] transition-all duration-300">
+          Request a Quote
+        </a>
+      </div>
+
+      <button class="lg:hidden w-10 h-10 border border-gray-200 rounded-lg flex flex-col items-center justify-center gap-1 bg-white" id="menuToggle" aria-label="Toggle menu">
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar1"></span>
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar2"></span>
+        <span class="w-5 h-0.5 bg-[#0f2d5c] rounded transition-all duration-300" id="bar3"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu lg:hidden bg-white border-t border-gray-100" id="mobileMenu">
+      <div class="site-container py-4 flex flex-col gap-3">
+        <a href="index.html" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">Home</a>
+        <a href="about.html" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">About</a>
+        <a href="index.html#categories" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">Categories</a>
+        <a href="product.html" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">Products</a>
+        <a href="brands.html" class="text-[#0f2d5c] font-semibold text-sm py-2 border-b border-gray-50">Brands</a>
+        <a href="#contact" class="text-[#0f2d5c] font-semibold text-sm py-2">Contact</a>
+        <a href="#contact" class="bg-[#0f2d5c] text-white text-center py-3 rounded-full text-xs font-semibold mt-2">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOP IMAGE ONLY -->
+  <section class="top-image">
+    <img src="assets/uytit.png" alt="UY TIT & COMPANY, INC.">
+  </section>
+
+  <!-- CLEAN HERO CONTENT -->
+  <section class="page-hero">
+    <div class="site-container max-w-3xl text-center">
+      <p class="section-label mb-4">Since 1868</p>
+
+      <h1 class="text-3xl md:text-4xl font-semibold text-[#0f2d5c] leading-tight tracking-[-0.02em]">
+         Uy Tit & Company, Inc.
+      </h1>
+
+      <p class="mt-5 text-gray-500 text-sm md:text-base leading-relaxed">
+        A long-established distributor of hardware tools, power tools, and industrial products
+        serving businesses across the Philippines.
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT INTRO -->
+  <section class="section-pad bg-white">
+    <div class="site-container max-w-4xl">
+      <div class="reveal">
+        <p class="section-label mb-4">About Us</p>
+
+        <h2 class="section-title mb-6">
+          A trusted name in hardware and industrial supply.
+        </h2>
+
+        <div class="space-y-5 body-copy">
+          <p>
+            Uy Tit & Company, Inc. is a prominent and established distributor of hardware tools,
+            power tools, and a wide range of industrial products in the Philippines.
+          </p>
+
+          <p>
+            With a rich history dating back to 1868, the company has consistently provided
+            quality products and dependable service to various industries, making it a trusted
+            name in the market.
+          </p>
+
+          <p>
+            Uy Tit & Company takes pride in its commitment to excellence, customer satisfaction,
+            and contributing to the growth of businesses across the country.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- HISTORY -->
+<section class="section-pad bg-gray-50">
+  <div class="site-container">
+    <div class="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
+      
+      <div class="reveal">
+        <p class="section-label mb-4">Company History</p>
+      </div>
+
+      <div class="reveal">
+        <div class="info-row">
+          <div>
+            <span class="text-[#0f2d5c] text-lg font-semibold">1868</span>
+          </div>
+          <div>
+            <h3 class="text-[#0f2d5c] font-semibold text-base mb-2">Founded in the Philippines</h3>
+            <p class="body-copy">
+              Uy Tit & Company started as a humble hardware store serving essential tool and equipment needs.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div>
+            <span class="text-[#0f2d5c] text-lg font-semibold">Growth</span>
+          </div>
+          <div>
+            <h3 class="text-[#0f2d5c] font-semibold text-base mb-2">Expanded Product Offering</h3>
+            <p class="body-copy">
+              Through decades of change, the company adapted its product lines to support construction, industrial, hardware, and operational requirements.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div>
+            <span class="text-[#0f2d5c] text-lg font-semibold">Today</span>
+          </div>
+          <div>
+            <h3 class="text-[#0f2d5c] font-semibold text-base mb-2">Reliable Supply for Businesses</h3>
+            <p class="body-copy">
+              Today, Uy Tit continues to serve customers with dependable products, responsive service, and long-term supplier and customer relationships.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY UPDATES -->
+<section class="section-pad bg-white">
+  <div class="site-container">
+    
+    <div class="max-w-3xl mb-10 reveal">
+      <p class="section-label mb-4">Company Updates</p>
+
+      <p class="body-copy">
+        Uy Tit & Company continues to support businesses through reliable product supply,
+        expanding brand partnerships, and consistent service to customers across various industries.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+      
+      <article class="contact-card">
+        <p class="text-xs text-gray-400 mb-3">Product Supply</p>
+        <h3 class="font-semibold text-[#0f2d5c] mb-3">
+          Continuous availability of industrial tools
+        </h3>
+        <p class="body-copy">
+          Uy Tit maintains consistent stock of hardware tools, power tools,
+          and industrial products to support ongoing construction,
+          maintenance, and operational requirements.
+        </p>
+      </article>
+
+      <article class="contact-card">
+        <p class="text-xs text-gray-400 mb-3">Partnership</p>
+        <h3 class="font-semibold text-[#0f2d5c] mb-3">
+          Strengthening supplier relationships
+        </h3>
+        <p class="body-copy">
+          The company continues to build long-term partnerships with
+          trusted manufacturers and brands, ensuring reliable sourcing
+          and product quality for customers.
+        </p>
+      </article>
+
+      <article class="contact-card">
+        <p class="text-xs text-gray-400 mb-3">Customer Support</p>
+        <h3 class="font-semibold text-[#0f2d5c] mb-3">
+          Serving business and industrial clients
+        </h3>
+        <p class="body-copy">
+          Uy Tit provides responsive service and practical solutions
+          tailored to the needs of contractors, workshops,
+          and industrial operations.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+  <!-- MISSION -->
+  <section class="section-pad bg-gray-50">
+    <div class="site-container max-w-3xl">
+      <div class="reveal">
+        <p class="section-label mb-4">Mission</p>
+
+        <p class="body-copy">
+          Our mission is to be a leading supplier of hardware tools, power tools,
+          and industrial products in the Philippines by delivering reliable,
+          durable, and practical solutions that support business operations
+          and long-term growth.
+        </p>
+
+        <a href="#contact" class="mt-8 inline-flex items-center gap-2 bg-[#0f2d5c] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#1a4a8a] transition">
+          Contact Us
+          <i data-lucide="phone" style="width:16px;height:16px"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="site-container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="contact-card">
+          <i data-lucide="map-pin" class="text-amber-600 mb-4" style="width:22px;height:22px"></i>
+          <h3 class="font-semibold text-[#0f2d5c] mb-2">Visit Us</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">314 Dasmarinas Street, Binondo Manila, Philippines</p>
+        </div>
+
+        <div class="contact-card">
+          <i data-lucide="phone" class="text-amber-600 mb-4" style="width:22px;height:22px"></i>
+          <h3 class="font-semibold text-[#0f2d5c] mb-2">Call Us</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">(02) 8 2429566</p>
+        </div>
+
+        <div class="contact-card">
+          <i data-lucide="mail" class="text-amber-600 mb-4" style="width:22px;height:22px"></i>
+          <h3 class="font-semibold text-[#0f2d5c] mb-2">Email</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">utcimanila@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0f2d5c] text-white pt-16 pb-8">
+    <div class="site-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+              <img src="assets/logo.png" alt="UY TIT Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-white">UY TIT & COMPANY, INC.</p>
+              <p class="text-[10px] text-[#f7e7a4]">Trusted Distributor</p>
+            </div>
+          </div>
+          <p class="text-xs text-white/70 leading-relaxed">
+            Supplying hardware tools, power tools, industrial products, gardening supplies, and dependable business solutions trusted across the Philippines.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Quick Links</h4>
+          <ul class="space-y-2.5">
+            <li><a href="index.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">About</a></li>
+            <li><a href="index.html#categories" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Categories</a></li>
+            <li><a href="product.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Products</a></li>
+            <li><a href="brands.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Brands</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Main Categories</h4>
+          <ul class="space-y-2.5">
+            <li><span class="text-xs text-white/70">Hardware Tools</span></li>
+            <li><span class="text-xs text-white/70">Power Tools</span></li>
+            <li><span class="text-xs text-white/70">Industrial Products</span></li>
+            <li><span class="text-xs text-white/70">Gardening Supplies</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm mb-4 text-[#f7e7a4]">Contact Info</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2 text-xs text-white/70">
+              <i data-lucide="map-pin" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0 mt-0.5"></i>
+              314 Dasmarinas Street, Binondo Manila, Philippines
+            </li>
+            <li class="flex items-center gap-2 text-xs text-white/70">
+              <i data-lucide="phone" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0"></i>
+              (02) 8 2429566
+            </li>
+            <li class="flex items-center gap-2 text-xs text-white/70">
+              <i data-lucide="mail" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0"></i>
+              utcimanila@gmail.com
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-wrap justify-between items-center gap-4">
+        <p class="text-xs text-white/50">© 1868 UY TIT & COMPANY, INC. All rights reserved.</p>
+
+        <div class="flex gap-3">
+          <a href="https://www.facebook.com/uytitandcompanyinc" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="facebook" style="width:14px;height:14px"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="instagram" style="width:14px;height:14px"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+            <i data-lucide="linkedin" style="width:14px;height:14px"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const bar1 = document.getElementById("bar1");
+    const bar2 = document.getElementById("bar2");
+    const bar3 = document.getElementById("bar3");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+
+      const open = mobileMenu.classList.contains("open");
+      bar1.style.transform = open ? "translateY(6px) rotate(45deg)" : "none";
+      bar2.style.opacity = open ? "0" : "1";
+      bar3.style.transform = open ? "translateY(-6px) rotate(-45deg)" : "none";
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        bar1.style.transform = "none";
+        bar2.style.opacity = "1";
+        bar3.style.transform = "none";
+      });
+    });
+
+    const progress = document.getElementById("scrollProgress");
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const width = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress.style.width = width + "%";
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

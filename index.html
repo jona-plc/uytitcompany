@@ -163,7 +163,6 @@
   position: absolute;
   inset: 0;
 
-  /* mas dark overlay para readable text */
   background: rgba(0, 0, 0, 0.6);
 
   pointer-events: none;
@@ -347,7 +346,7 @@
 .categories-section{
   margin: 0;
   padding: 0;
-  background: #f8f8f8; /* same sa next section */
+  background: #f8f8f8; 
 }
 
 .category-title{
@@ -372,7 +371,7 @@
 .category-wrap{
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 6; /* desktop pahaba banner */
+  aspect-ratio: 16 / 6;
   min-height: 360px;
   max-height: 620px;
   overflow: hidden;
@@ -391,7 +390,6 @@
   z-index: 2;
 }
 
-/* FULL IMAGE — walang crop */
 .category-view img{
   width: 100%;
   height: 100%;
@@ -400,7 +398,6 @@
   
 }
 
-/* mobile pahaba pa rin pero hindi sobrang taas */
 @media (max-width: 768px){
   .category-wrap{
     aspect-ratio: 16 / 9;
@@ -409,7 +406,7 @@
   }
 
   .category-view img{
-    object-fit: contain; /* full image sa mobile */
+    object-fit: contain; 
   }
 }
 .why-grid{
@@ -567,8 +564,8 @@
       </div>
 
       <nav class="hidden lg:flex items-center gap-6" id="desktopNav">
-        <a href="#home" class="nav-link active text-[#0f2d5c] font-bold text-sm">Home</a>
-        <a href="#about" class="nav-link text-[#0f2d5c] font-bold text-sm">About</a>
+        <a href="index.html" class="nav-link active text-[#0f2d5c] font-bold text-sm">Home</a>
+        <a href="about.html" class="nav-link text-[#0f2d5c] font-bold text-sm">About</a>
         <a href="#categories" class="nav-link text-[#0f2d5c] font-bold text-sm">Categories</a>
         <a href="#products" class="nav-link text-[#0f2d5c] font-bold text-sm">Products</a>
         <a href="#brands" class="nav-link text-[#0f2d5c] font-bold text-sm">Brands</a>
@@ -590,8 +587,8 @@
 
     <div class="mobile-menu lg:hidden bg-white border-t border-gray-100" id="mobileMenu">
       <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-3">
-        <a href="#home" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Home</a>
-        <a href="#about" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">About</a>
+        <a href="index.html" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Home</a>
+        <a href="about.html" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">About</a>
         <a href="#categories" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Categories</a>
         <a href="#products" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Products</a>
         <a href="#brands" class="text-[#0f2d5c] font-bold text-sm py-2 border-b border-gray-50">Brands</a>
@@ -701,6 +698,10 @@
       <img src="assets/JBENZEN.png" alt="JB">
     </div>
 
+     <div class="category-view">
+      <img src="assets/sol.png" alt="sol">
+    </div>
+
   <div class="category-view">
       <img src="assets/deli1.png" alt="Deli">
     </div>
@@ -769,22 +770,17 @@
 
   </div>
 </section>
-<!-- PRODUCTS -->
+ <!-- PRODUCTS -->
 <section id="products" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-5">
 
-    <!-- HEADER -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 anim-fade-up">
-
-      <!-- TITLE -->
       <div>
-        
         <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#0f2d5c]">
           Popular Products
         </h2>
       </div>
 
-      <!-- BUTTONS -->
       <div class="flex gap-3 justify-center md:justify-end">
         <button id="scrollLeft" class="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center text-[#0f2d5c] hover:bg-[#0f2d5c] hover:text-white transition-all duration-300">
           <i data-lucide="arrow-left" style="width:18px;height:18px"></i>
@@ -794,75 +790,158 @@
           <i data-lucide="arrow-right" style="width:18px;height:18px"></i>
         </button>
       </div>
-
     </div>
 
-    <!-- PRODUCT SLIDER -->
     <div class="mt-12 product-track" id="productTrack">
 
-      <!-- ITEM 1 -->
       <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
-        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
-         <img src="assets/grinder.png" class="w-full h-full object-cover rounded-2xl">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center overflow-hidden">
+          <img src="assets/gardenhose.png" class="w-full h-full object-contain p-4">
         </div>
-        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Power Tools</span>
-        <h3 class="font-bold text-[#0f2d5c] mt-1">Angle Grinder</h3>
-        <p class="text-xs text-gray-500 mt-2">For cutting, grinding, and finishing tasks.</p>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Solinnflex</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">Garden Hose</h3>
+        <p class="text-xs text-gray-500 mt-2">1/2" x 12mm x 16mm x 30m garden hose.</p>
       </article>
 
-      <!-- ITEM 2 -->
       <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
-        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
-        <img src="assets/bench.png" class="w-full h-full object-cover rounded-2xl">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center overflow-hidden">
+          <img src="assets/hose.png" class="w-full h-full object-contain p-4">
         </div>
-        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Workshop</span>
-        <h3 class="font-bold text-[#0f2d5c] mt-1">Bench Grinder</h3>
-        <p class="text-xs text-gray-500 mt-2">Used for sharpening and finishing.</p>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Solinnflex</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">Braided Chemical Reinforced Hose</h3>
+        <p class="text-xs text-gray-500 mt-2">1/2" x 13mm x 17mm x 100m reinforced hose.</p>
       </article>
 
-
-      <!-- ITEM 4 -->
-      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
-        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
-          <img src="assets/ladder.png" class="w-full h-full object-cover rounded-2xl">
-        </div>
-        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Equipment</span>
-        <h3 class="font-bold text-[#0f2d5c] mt-1">Ladder</h3>
-        <p class="text-xs text-gray-500 mt-2">For elevated work access.</p>
-      </article>
-
-            <!-- ITEM 5 -->
-      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
-        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
-          <img src="assets/tape.png" class="w-full h-full object-cover rounded-2xl">
-        </div>
-        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Hand Tools</span>
-        <h3 class="font-bold text-[#0f2d5c] mt-1">Measuring Tape</h3>
-        <p class="text-xs text-gray-500 mt-2">For accurate length and distance measurements.</p>
-      </article>
-
-      <!-- ITEM 6 -->
-      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
-        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
-          <img src="assets/pliers.png" class="w-full h-full object-cover rounded-2xl">
-        </div>
-        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Hand Tools</span>
-        <h3 class="font-bold text-[#0f2d5c] mt-1">Pliers Set</h3>
-        <p class="text-xs text-gray-500 mt-2">Ideal for gripping, bending, and cutting wires.</p>
-      </article>
-
-      <!-- ITEM 7 -->
-      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
-        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
-          <img src="assets/shovel.png" class="w-full h-full object-cover rounded-2xl">
-        </div>
-        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Garden Tools</span>
-        <h3 class="font-bold text-[#0f2d5c] mt-1">3-Piece Shovel, Hoe & Rake</h3>
-        <p class="text-xs text-gray-500 mt-2">Perfect set for digging, cultivating, and leveling soil.</p>
-      </article>
-    </div>
-
+      <!-- ITEM 3 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/dmachine.png" class="w-full h-full object-contain p-4">
   </div>
+  <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Indestro</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Drain Cleaning Machine</h3>
+  <p class="text-xs text-gray-500 mt-2">250W, 400 rpm, 25–30 meters capacity.</p>
+</article>
+<!-- ITEM 1 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/bench2.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Indestro</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Bench Grinder</h3>
+  <p class="text-xs text-gray-500 mt-2">6" (150 x 16 x 12.7mm) grinding machine.</p>
+</article>
+
+<!-- ITEM 2 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/bench1.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Indestro</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Bench Grinder w/ Lamp</h3>
+  <p class="text-xs text-gray-500 mt-2">8" (200 x 20 x 16mm) with built-in lamp.</p>
+</article>
+  
+<!-- DELI ITEMS -->
+
+<!-- ITEM 1 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/deli-im1.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-red-600 mt-4 inline-block">Deli</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Brushless Impact Driver</h3>
+  <p class="text-xs text-gray-500 mt-2">20V cordless impact driver for fastening applications.</p>
+</article>
+
+<!-- ITEM 2 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/tape1.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-red-600 mt-4 inline-block">Deli</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Steel Tape Measure</h3>
+  <p class="text-xs text-gray-500 mt-2">7.5m measuring tape with durable steel blade.</p>
+</article>
+
+<!-- ITEM 3 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/deli3.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-red-600 mt-4 inline-block">Deli</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Cordless Drill</h3>
+  <p class="text-xs text-gray-500 mt-2">20V lithium-ion drill with 45Nm torque.</p>
+</article>
+
+<!-- ITEM 4 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/rotary.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-red-600 mt-4 inline-block">Deli</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Rotary Hammer</h3>
+  <p class="text-xs text-gray-500 mt-2">20V rotary hammer for drilling and chiseling.</p>
+</article>
+
+<!-- ITEM 6 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/shear.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-red-600 mt-4 inline-block">Deli</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Garden Shears</h3>
+  <p class="text-xs text-gray-500 mt-2">8.5" pruning shears for cutting branches.</p>
+</article>
+
+<!-- ITEM 7 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/prunning.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-red-600 mt-4 inline-block">Deli</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Pruning Shear</h3>
+  <p class="text-xs text-gray-500 mt-2">Ergonomic shear for trimming plants and branches.</p>
+</article>
+
+<!-- ITEM 8 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/handsaw.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-red-600 mt-4 inline-block">Deli</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Hand Saw</h3>
+  <p class="text-xs text-gray-500 mt-2">16" hand saw with 7 TPI for wood cutting.</p>
+</article>
+
+      <article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+        <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center overflow-hidden">
+          <img src="assets/tepflon.png" class="w-full h-full object-contain p-4">
+        </div>
+        <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Solinnflex</span>
+        <h3 class="font-bold text-[#0f2d5c] mt-1">Teflon Tape</h3>
+        <p class="text-xs text-gray-500 mt-2">1/2 x 10m sealing tape for pipe thread applications.</p>
+      </article>
+
+      <!-- ITEM 1 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/tire.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Indestro</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Tire Mini Air Compressor</h3>
+  <p class="text-xs text-gray-500 mt-2">1/4 HP air compressor with spray gun and hose.</p>
+</article>
+
+<!-- ITEM 2 -->
+<article class="product-card rounded-3xl border border-gray-100 bg-white p-5 hover-lift">
+  <div class="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
+    <img src="assets/drain.png" class="w-full h-full object-contain p-4">
+  </div>
+  <span class="text-[10px] font-bold uppercase text-amber-600 mt-4 inline-block">Indestro</span>
+  <h3 class="font-bold text-[#0f2d5c] mt-1">Drain Cleaning Machine</h3>
+  <p class="text-xs text-gray-500 mt-2">150W, 250 rpm, dia 20–100mm.</p>
+</article>
+
 </section>
 
   <section id="brands" class="py-20 bg-white overflow-hidden">
@@ -1059,88 +1138,89 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[#0f2d5c] text-white pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-5">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-14 h-19 rounded-xl bg-amber-500 flex items-center justify-center">
-              <span class="font-heading font-bold text-[#0f2d5c] text-lg">UTCI</span>
-            </div>
-            <div>
-              <p class="font-heading font-bold text-sm">UY TIT & COMPANY, INC.</p>
-              <p class="text-[10px] text-white/50">Trusted Distributor</p>
-            </div>
+<footer class="bg-[#0f2d5c] text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+      
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+            <img src="assets/logo.png" alt="UY TIT Logo" class="w-full h-full object-contain">
           </div>
-          <p class="text-xs text-white/60 leading-relaxed">
-            Supplying hardware tools, power tools, industrial products, gardening supplies, and dependable business solutions trusted across the Philippines.
-          </p>
+          <div>
+            <p class="font-heading font-bold text-sm text-white">UY TIT & COMPANY, INC.</p>
+            <p class="text-[10px] text-[#f7e7a4]">Trusted Distributor</p>
+          </div>
         </div>
-
-        <div>
-          <h4 class="font-bold text-sm mb-4">Quick Links</h4>
-          <ul class="space-y-2.5">
-            <li><a href="#home" class="text-xs text-white/60 hover:text-amber-500 transition-colors">Home</a></li>
-            <li><a href="#about" class="text-xs text-white/60 hover:text-amber-500 transition-colors">About</a></li>
-            <li><a href="#categories" class="text-xs text-white/60 hover:text-amber-500 transition-colors">Categories</a></li>
-            <li><a href="#products" class="text-xs text-white/60 hover:text-amber-500 transition-colors">Products</a></li>
-            <li><a href="#brands" class="text-xs text-white/60 hover:text-amber-500 transition-colors">Brands</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-sm mb-4">Main Categories</h4>
-          <ul class="space-y-2.5">
-            <li><span class="text-xs text-white/60">Hardware Tools</span></li>
-            <li><span class="text-xs text-white/60">Power Tools</span></li>
-            <li><span class="text-xs text-white/60">Industrial Products</span></li>
-            <li><span class="text-xs text-white/60">Gardening Supplies</span></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-bold text-sm mb-4">Contact Info</h4>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-2 text-xs text-white/60">
-              <i data-lucide="map-pin" style="width:14px;height:14px" class="text-amber-500 flex-shrink-0"></i>
-              314 DASMARINAS STREET, BINONDO MANILA, Philippines
-            </li>
-            <li class="flex items-center gap-2 text-xs text-white/60">
-              <i data-lucide="phone" style="width:14px;height:14px" class="text-amber-500 flex-shrink-0"></i>
-              (02) 8 2429566
-            </li>
-            <li class="flex items-center gap-2 text-xs text-white/60">
-              <i data-lucide="truck" style="width:14px;height:14px" class="text-amber-500 flex-shrink-0"></i>
-              Trusted across the Philippines
-            </li>
-          </ul>
-        </div>
+        <p class="text-xs text-white/70 leading-relaxed">
+          Supplying hardware tools, power tools, industrial products, gardening supplies, and dependable business solutions trusted across the Philippines.
+        </p>
       </div>
 
-      <div class="pt-6 flex flex-wrap justify-between items-center gap-4">
-        <p class="text-xs text-white/40">© 1868 UY TIT & COMPANY, INC. All rights reserved.</p>
-        <div class="flex gap-3">
-          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-amber-500 hover:text-[#0f2d5c] transition-all duration-300">
-            <i data-lucide="facebook" style="width:14px;height:14px"></i>
-          </a>
-          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-amber-500 hover:text-[#0f2d5c] transition-all duration-300">
-            <i data-lucide="instagram" style="width:14px;height:14px"></i>
-          </a>
-          <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-amber-500 hover:text-[#0f2d5c] transition-all duration-300">
-            <i data-lucide="linkedin" style="width:14px;height:14px"></i>
-          </a>
-        </div>
+      <div>
+        <h4 class="font-bold text-sm mb-4 text-[#f7e7a4]">Quick Links</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#home" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Home</a></li>
+          <li><a href="about.html" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">About</a></li>
+          <li><a href="#categories" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Categories</a></li>
+          <li><a href="#products" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Products</a></li>
+          <li><a href="#brands" class="text-xs text-white/70 hover:text-[#f7e7a4] transition-colors">Brands</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-sm mb-4 text-[#f7e7a4]">Main Categories</h4>
+        <ul class="space-y-2.5">
+          <li><span class="text-xs text-white/70">Hardware Tools</span></li>
+          <li><span class="text-xs text-white/70">Power Tools</span></li>
+          <li><span class="text-xs text-white/70">Industrial Products</span></li>
+          <li><span class="text-xs text-white/70">Gardening Supplies</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-sm mb-4 text-[#f7e7a4]">Contact Info</h4>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2 text-xs text-white/70">
+            <i data-lucide="map-pin" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0 mt-0.5"></i>
+            314 Dasmarinas Street, Binondo Manila, Philippines
+          </li>
+          <li class="flex items-center gap-2 text-xs text-white/70">
+            <i data-lucide="phone" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0"></i>
+            (02) 8 2429566
+          </li>
+          <li class="flex items-center gap-2 text-xs text-white/70">
+            <i data-lucide="mail" style="width:14px;height:14px" class="text-[#f7e7a4] flex-shrink-0"></i>
+            utcimanila@gmail.com
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="pt-6 flex flex-wrap justify-between items-center gap-4">
+      <p class="text-xs text-white/50">© 1868 UY TIT & COMPANY, INC. All rights reserved.</p>
+
+      <div class="flex gap-3">
+        <a href="https://www.facebook.com/uytitandcompanyinc" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+          <i data-lucide="facebook" style="width:14px;height:14px"></i>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+          <i data-lucide="instagram" style="width:14px;height:14px"></i>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c9a227] hover:text-[#0f2d5c] transition-all duration-300">
+          <i data-lucide="linkedin" style="width:14px;height:14px"></i>
+        </a>
       </div>
     </div>
-  </footer>
-
+  </div>
+</footer>
   <!-- BACK TO TOP -->
   <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-[#0f2d5c] text-white shadow-xl flex items-center justify-center z-50 opacity-0 translate-y-4 transition-all duration-300 hover:bg-amber-500 hover:text-[#0f2d5c]" aria-label="Back to top">
     <i data-lucide="chevron-up" style="width:20px;height:20px"></i>
   </button>
 
   <script>
-    // Intersection animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
