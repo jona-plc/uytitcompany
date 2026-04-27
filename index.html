@@ -1332,7 +1332,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const backToTop = document.getElementById('backToTop');
   const navLinks = document.querySelectorAll('#desktopNav a');
 
-  // ✅ FIXED: only # links
+  
   const sections = [...navLinks]
     .map(link => link.getAttribute('href'))
     .filter(href => href && href.startsWith('#'))
@@ -1393,7 +1393,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 // ===============================
-// CATEGORY SLIDER (CONTINUOUS - NO STOP)
+// CATEGORY SLIDER 
 // ===============================
 const views = document.querySelectorAll('.category-view');
 
